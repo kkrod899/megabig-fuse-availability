@@ -79,14 +79,47 @@
     return (day.slots || []).filter((slot) => slot.state === "reservable");
   }
 
+  function timeToMinutes(value) {
+    const normalized = String(value || "").replace(/^翌/, "");
+    const [hours, minutes] = normalized.split(":").map(Number);
+    if (!Number.isFinite(hours) || !Number.isFinite(minutes)) return null;
+    return hours * 60 + minutes + (String(value).startsWith("翌") ? 1440 : 0);
+  }
+
+  function minutesToTime(value) {
+    const normalized = value % 1440;
+    const clock = `${String(Math.floor(normalized / 60)).padStart(2, "0")}:${String(normalized % 60).padStart(2, "0")}`;
+    return value >= 1440 ? `翌${clock}` : clock;
+  }
+
+  function availableRanges(day) {
+    const intervals = availableSlots(day)
+      .map((slot) => ({ start: timeToMinutes(slot.start), end: timeToMinutes(slot.end) }))
+      .filter((slot) => Number.isFinite(slot.start) && Number.isFinite(slot.end) && slot.end > slot.start)
+      .sort((a, b) => a.start - b.start || a.end - b.end);
+
+    return intervals.reduce((ranges, interval) => {
+      const current = ranges[ranges.length - 1];
+      if (!current || interval.start > current.end) {
+        ranges.push({ ...interval });
+      } else {
+        current.end = Math.max(current.end, interval.end);
+      }
+      return ranges;
+    }, []).map((range) => ({
+      start: minutesToTime(range.start),
+      end: minutesToTime(range.end)
+    }));
+  }
+
   function dayPresentation(day) {
-    const slots = availableSlots(day);
-    if (slots.length) {
-      const preview = slots.slice(0, 2).map((slot) => `${slot.start}〜${slot.end}`).join(" / ");
-      const remainder = slots.length > 2 ? ` ほか${slots.length - 2}枠` : "";
+    const ranges = availableRanges(day);
+    if (ranges.length) {
+      const preview = ranges.slice(0, 2).map((range) => `${range.start}〜${range.end}`).join(" / ");
+      const remainder = ranges.length > 2 ? ` ほか${ranges.length - 2}時間帯` : "";
       return {
         state: "available",
-        status: `${slots.length}枠 Web予約可`,
+        status: "予約可能",
         summary: `${preview}${remainder}`
       };
     }
@@ -95,10 +128,10 @@
     const checked = Number(day.checked_slot_count || 0);
     const total = Number(day.total_slot_count || 0);
     if (status === "success") {
-      return { state: "unavailable", status: "予約可能枠なし", summary: `${checked || total}枠を確認済み` };
+      return { state: "unavailable", status: "空き時間なし", summary: "対象時間を確認済み" };
     }
     if (status === "partial") {
-      return { state: "partial", status: "一部確認済み", summary: `${checked} / ${total}枠を確認` };
+      return { state: "partial", status: "確認途中", summary: `${checked} / ${total}時刻を確認` };
     }
     if (status === "error") {
       return { state: "error", status: "確認失敗", summary: "実行ログを確認してください" };
@@ -116,7 +149,7 @@
     const details = fragment.querySelector(".day-details");
     const date = parseDay(day.date);
     const presentation = dayPresentation(day);
-    const slots = availableSlots(day);
+    const ranges = availableRanges(day);
     const detailsId = `day-details-${index}`;
 
     fragment.querySelector(".date-label").textContent = dateFormatter.format(date);
@@ -127,21 +160,21 @@
     fragment.querySelector(".day-summary").textContent = presentation.summary;
 
     const caption = fragment.querySelector(".detail-caption");
-    caption.textContent = slots.length
-      ? "予約可能な開始〜終了時刻"
+    caption.textContent = ranges.length
+      ? "予約可能な時間帯"
       : "この日の確認状況";
 
     const slotList = fragment.querySelector(".slot-list");
-    if (slots.length) {
-      slots.forEach((slot) => {
+    if (ranges.length) {
+      ranges.forEach((range) => {
         const item = document.createElement("li");
         item.className = "slot-item";
         const time = document.createElement("span");
         time.className = "slot-time";
-        time.textContent = `${slot.start}〜${slot.end}`;
+        time.textContent = `${range.start}〜${range.end}`;
         const state = document.createElement("span");
         state.className = "slot-state";
-        state.textContent = "Web予約可";
+        state.textContent = "空きあり";
         item.append(time, state);
         slotList.appendChild(item);
       });
@@ -171,14 +204,14 @@
     const target = data.target || {};
     const days = Array.isArray(data.days) ? data.days : [];
     const allAvailable = days.flatMap((day) =>
-      availableSlots(day).map((slot) => ({ ...slot, date: day.date }))
+      availableRanges(day).map((range) => ({ ...range, date: day.date }))
     );
     allAvailable.sort((a, b) => `${a.date}T${a.start}`.localeCompare(`${b.date}T${b.start}`));
 
     elements.demoNotice.hidden = !data.demo;
     elements.partySize.textContent = `${target.party_size || "—"}名`;
-    elements.duration.textContent = formatDuration(Number(target.duration_minutes));
-    elements.timeRange.textContent = `${target.time_from || "—"}開始〜${target.time_to || "—"}終了`;
+    elements.duration.textContent = `${formatDuration(Number(target.duration_minutes))}単位で確認`;
+    elements.timeRange.textContent = `${target.time_from || "—"}〜${target.time_to || "—"}`;
     elements.bookingLink.href = target.booking_url || elements.bookingLink.href;
 
     const age = ageLabel(data.generated_at);
@@ -195,7 +228,7 @@
     } else {
       elements.earliestSlot.textContent = days.some((day) => day.scan_status === "pending" || day.scan_status === "partial")
         ? "確認中です"
-        : "向こう1週間に予約可能枠なし";
+        : "向こう1週間に空き時間なし";
     }
 
     const availableDayCount = days.filter((day) => availableSlots(day).length > 0).length;
@@ -203,7 +236,7 @@
     elements.dayList.replaceChildren();
     let openedAvailableDay = false;
     days.forEach((day, index) => {
-      const hasAvailability = availableSlots(day).length > 0;
+      const hasAvailability = availableRanges(day).length > 0;
       const shouldOpen = hasAvailability && !openedAvailableDay;
       if (shouldOpen) openedAvailableDay = true;
       elements.dayList.appendChild(renderDay(day, index, shouldOpen));
