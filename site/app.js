@@ -9,7 +9,6 @@
     freshness: document.getElementById("freshness"),
     demoNotice: document.getElementById("demo-notice"),
     earliestSlot: document.getElementById("earliest-slot"),
-    availableDays: document.getElementById("available-days"),
     dayList: document.getElementById("day-list"),
     errorPanel: document.getElementById("error-panel"),
     errorMessage: document.getElementById("error-message"),
@@ -22,7 +21,7 @@
     day: "numeric",
     timeZone: "Asia/Tokyo"
   });
-  const weekdayFormatter = new Intl.DateTimeFormat("ja-JP", {
+  const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
     weekday: "short",
     timeZone: "Asia/Tokyo"
   });
@@ -130,7 +129,7 @@
     const presentation = dayPresentation(day);
 
     fragment.querySelector(".date-label").textContent = dateFormatter.format(date);
-    fragment.querySelector(".weekday-label").textContent = weekdayFormatter.format(date);
+    fragment.querySelector(".weekday-label").textContent = weekdayFormatter.format(date).toLowerCase();
     const statusElement = fragment.querySelector(".day-status");
     statusElement.textContent = presentation.status;
     statusElement.dataset.state = presentation.state;
@@ -165,8 +164,6 @@
       elements.earliestSlot.textContent = "今日は空き時間なし";
     }
 
-    const availableDayCount = days.filter((day) => availableSlots(day).length > 0).length;
-    elements.availableDays.textContent = `${availableDayCount}日で予約可`;
     elements.dayList.replaceChildren();
     days.forEach((day) => {
       elements.dayList.appendChild(renderDay(day));
