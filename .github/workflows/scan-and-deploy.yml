@@ -66,6 +66,11 @@ jobs:
     steps:
       - name: Checkout updated result
         uses: actions/checkout@v5
+        with:
+          # The scan job commits latest.json after this workflow starts.
+          # Explicitly read the current main branch instead of the original
+          # workflow-triggering SHA so Pages always receives that new result.
+          ref: main
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
