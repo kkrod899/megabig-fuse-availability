@@ -8,14 +8,16 @@
   --border: #c8c0b5;
   --primary: #bf7768;
   --primary-text: #fffaf1;
-  --available: #54866f;
-  --available-soft: #dce9e2;
+  --available: #00a86b;
+  --available-soft: #d7f3e3;
   --unavailable: #929aa3;
   --unavailable-soft: #e9ecee;
   --warning: #a77c48;
   --warning-soft: #f3e5c9;
   --danger: #a95861;
   --danger-soft: #f4dfe1;
+  --holiday: #c9565c;
+  --saturday: #4f78b8;
   --focus: #edc382;
   --shadow: 0 7px 0 rgba(67, 78, 91, 0.22), 0 18px 36px rgba(56, 66, 78, 0.14);
 }
@@ -116,7 +118,7 @@ h1 {
 }
 
 .freshness[data-state="fresh"] {
-  background: var(--surface);
+  background: var(--available-soft);
   color: var(--available);
 }
 
@@ -239,6 +241,18 @@ h1 {
   text-transform: lowercase;
 }
 
+.date-block[data-day-type="sunday"] .date-label,
+.date-block[data-day-type="sunday"] .weekday-label,
+.date-block[data-day-type="holiday"] .date-label,
+.date-block[data-day-type="holiday"] .weekday-label {
+  color: var(--holiday);
+}
+
+.date-block[data-day-type="saturday"] .date-label,
+.date-block[data-day-type="saturday"] .weekday-label {
+  color: var(--saturday);
+}
+
 .day-status {
   display: inline-flex;
   align-items: center;
@@ -260,6 +274,10 @@ h1 {
 
 .day-status[data-state="available"]::before {
   background: var(--available);
+}
+
+.day-status[data-state="available"] {
+  color: var(--available);
 }
 
 .day-status[data-state="pending"]::before,
