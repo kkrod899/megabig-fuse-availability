@@ -16,13 +16,14 @@
     dayTemplate: document.getElementById("day-template")
   };
 
-  const dateFormatter = new Intl.DateTimeFormat("ja-JP", {
-    month: "numeric",
-    day: "numeric",
+  const weekdayFormatter = new Intl.DateTimeFormat("ja-JP", {
+    weekday: "short",
     timeZone: "Asia/Tokyo"
   });
-  const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
+  const fullDateFormatter = new Intl.DateTimeFormat("ja-JP", {
+    month: "long",
+    day: "numeric",
+    weekday: "long",
     timeZone: "Asia/Tokyo"
   });
   const holidayCache = new Map();
@@ -197,22 +198,18 @@
 
   function renderDay(day) {
     const fragment = elements.dayTemplate.content.cloneNode(true);
-    const card = fragment.querySelector(".day-card");
-    const dateBlock = fragment.querySelector(".date-block");
+    const row = fragment.querySelector(".day-row");
+    const dateChip = fragment.querySelector(".date-chip");
     const date = parseDay(day.date);
     const presentation = dayPresentation(day);
 
-    dateBlock.dataset.dayType = dayType(day.date);
-    fragment.querySelector(".date-label").textContent = dateFormatter.format(date);
-    fragment.querySelector(".weekday-label").textContent = weekdayFormatter.format(date).toLowerCase();
-    const statusElement = fragment.querySelector(".day-status");
-    statusElement.textContent = presentation.status;
-    statusElement.dataset.state = presentation.state;
-    const summaryElement = fragment.querySelector(".day-summary");
-    summaryElement.textContent = presentation.summary;
-    summaryElement.hidden = !presentation.summary;
+    dateChip.dataset.dayType = dayType(day.date);
+    dateChip.setAttribute("aria-label", fullDateFormatter.format(date));
+    fragment.querySelector(".date-label").textContent = String(Number(day.date.split("-")[2]));
+    fragment.querySelector(".weekday-label").textContent = weekdayFormatter.format(date);
+    fragment.querySelector(".day-time").textContent = presentation.summary || presentation.status;
 
-    card.dataset.state = presentation.state;
+    row.dataset.state = presentation.state;
     return fragment;
   }
 
