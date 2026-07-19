@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#8493a3">
+  <meta name="theme-color" content="#fbeaf0">
   <title>フラットルーム空き確認</title>
-  <link rel="stylesheet" href="./styles.css?v=20260720-flat1">
+  <link rel="stylesheet" href="./styles.css?v=20260720-pink-final">
 </head>
 <body>
   <main class="app-shell">
     <header class="page-header">
-      <div>
-        <p class="eyebrow">MEGA BIG 布施駅前店</p>
-        <h1>フラットルーム</h1>
+      <div class="header-meta">
+        <span class="store-label">MEGA BIG 布施駅前店</span>
+        <span class="freshness" id="freshness" data-state="loading">読込中</span>
       </div>
-      <span class="freshness" id="freshness" data-state="loading">読込中</span>
+      <h1>フラットルーム</h1>
+      <p class="today-label">今日の空き状況</p>
     </header>
 
     <section class="demo-notice" id="demo-notice" hidden>
@@ -22,13 +23,9 @@
     </section>
 
     <section class="summary" aria-labelledby="summary-title">
-      <p class="summary-label" id="summary-title">今日予約可能な時間帯</p>
+      <p class="summary-label" id="summary-title">予約可能な時間帯</p>
       <p class="summary-value" id="earliest-slot">確認しています…</p>
     </section>
-
-    <p class="refresh-note" id="refresh-note">
-      本日9時時点の空き時間帯です。
-    </p>
 
     <section class="week" aria-label="7日間の空き時間">
       <div class="day-list" id="day-list" aria-live="polite"></div>
@@ -41,28 +38,23 @@
 
     <footer class="page-footer">
       <a class="booking-action" id="booking-link" href="https://big-echo.tottokun.com/ownedmedia/ownedmedia_immediately_be/gXmZjh9iVXzm67v" target="_blank" rel="noopener noreferrer">
-        公式予約画面で確認する ↗
+        公式ページで予約する
       </a>
       <p>空き状況は変わるため、予約前に公式画面で最終確認してください。</p>
     </footer>
   </main>
 
   <template id="day-template">
-    <article class="day-card">
-      <div class="day-row">
-        <span class="date-block">
-          <span class="date-label"></span>
-          <span class="weekday-label"></span>
-        </span>
-        <span class="day-overview">
-          <span class="day-status"></span>
-          <span class="day-summary"></span>
-        </span>
-      </div>
+    <article class="day-row">
+      <span class="date-chip">
+        <span class="date-label"></span>
+        <span class="weekday-label"></span>
+      </span>
+      <span class="day-time"></span>
     </article>
   </template>
 
   <script src="./config.js"></script>
-  <script src="./app.js?v=20260720-accent1"></script>
+  <script src="./app.js?v=20260720-pink-final"></script>
 </body>
 </html>
