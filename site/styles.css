@@ -168,8 +168,7 @@ h2 {
   margin-top: 14px;
 }
 
-.primary-action,
-.secondary-action {
+.primary-action {
   display: inline-flex;
   min-height: 48px;
   align-items: center;
@@ -192,14 +191,6 @@ h2 {
 .primary-action[disabled] {
   cursor: wait;
   opacity: 0.65;
-}
-
-.secondary-action {
-  flex: 0 1 auto;
-  padding: 0 14px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
 }
 
 .refresh-note {
@@ -379,10 +370,6 @@ h2 {
 @media (max-width: 420px) {
   .action-row {
     flex-direction: column;
-  }
-
-  .secondary-action {
-    width: 100%;
   }
 
   .day-details {

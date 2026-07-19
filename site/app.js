@@ -14,8 +14,6 @@
     earliestSlot: document.getElementById("earliest-slot"),
     checkedAt: document.getElementById("checked-at"),
     reloadButton: document.getElementById("reload-button"),
-    runAction: document.getElementById("run-action"),
-    refreshNote: document.getElementById("refresh-note"),
     availableDays: document.getElementById("available-days"),
     dayList: document.getElementById("day-list"),
     errorPanel: document.getElementById("error-panel"),
@@ -180,7 +178,7 @@
     elements.demoNotice.hidden = !data.demo;
     elements.partySize.textContent = `${target.party_size || "—"}名`;
     elements.duration.textContent = formatDuration(Number(target.duration_minutes));
-    elements.timeRange.textContent = `${target.time_from || "—"}〜${target.time_to || "—"}`;
+    elements.timeRange.textContent = `${target.time_from || "—"}開始〜${target.time_to || "—"}終了`;
     elements.bookingLink.href = target.booking_url || elements.bookingLink.href;
 
     const age = ageLabel(data.generated_at);
@@ -235,12 +233,6 @@
   }
 
   elements.reloadButton.addEventListener("click", loadAvailability);
-
-  if (config.actionsUrl) {
-    elements.runAction.href = config.actionsUrl;
-    elements.runAction.hidden = false;
-    elements.refreshNote.textContent = "再読込は保存済みの最新結果を表示します。新しく走査する場合は「今すぐ確認を実行」を押してください。";
-  }
 
   loadAvailability();
   window.setInterval(loadAvailability, 60_000);

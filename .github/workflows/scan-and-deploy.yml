@@ -2,20 +2,9 @@ name: Scan and deploy availability
 
 on:
   schedule:
-    - cron: "23 */4 * * *"
-      timezone: "Asia/Tokyo"
-    - cron: "17 3 * * *"
+    - cron: "0 9 * * *"
       timezone: "Asia/Tokyo"
   workflow_dispatch:
-    inputs:
-      scan_days:
-        description: Days to scan from today
-        required: true
-        default: "2"
-        type: choice
-        options:
-          - "2"
-          - "7"
 
 concurrency:
   group: megabig-scan-pages
@@ -26,9 +15,9 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
     env:
-      SCAN_LIMIT_DAYS: ${{ github.event_name == 'workflow_dispatch' && inputs.scan_days || (github.event.schedule == '17 3 * * *' && '7' || '2') }}
+      SCAN_LIMIT_DAYS: "7"
     steps:
       - name: Checkout
         uses: actions/checkout@v5

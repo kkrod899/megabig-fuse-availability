@@ -172,7 +172,7 @@ async function scanDay(page, config, date, runtime) {
   for (const hourOption of hours) {
     const hour = Number(hourOption.value);
     if (!Number.isFinite(hour)) continue;
-    if ((hour + 1) * 60 <= startBoundary || hour * 60 >= endBoundary) continue;
+    if ((hour + 1) * 60 <= startBoundary || hour * 60 + config.durationMinutes > endBoundary) continue;
 
     await page.locator("#select_hours").selectOption(hourOption.value);
     await page.waitForFunction(() => document.querySelectorAll("#select_minutes option").length > 1);
@@ -181,7 +181,11 @@ async function scanDay(page, config, date, runtime) {
     for (const minuteOption of minutes) {
       const minute = Number(minuteOption.value);
       const slotMinute = hour * 60 + minute;
-      if (!Number.isFinite(minute) || slotMinute < startBoundary || slotMinute >= endBoundary) continue;
+      if (
+        !Number.isFinite(minute) ||
+        slotMinute < startBoundary ||
+        slotMinute + config.durationMinutes > endBoundary
+      ) continue;
       totalSlots += 1;
 
       const start = `${pad(hour)}:${pad(minute)}`;
