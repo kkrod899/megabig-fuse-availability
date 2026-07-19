@@ -19,7 +19,7 @@
   --holiday: #c9565c;
   --saturday: #4f78b8;
   --focus: #edc382;
-  --shadow: 0 7px 0 rgba(67, 78, 91, 0.22), 0 18px 36px rgba(56, 66, 78, 0.14);
+  --shadow: none;
 }
 
 * {
@@ -32,9 +32,10 @@
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0;
   overflow-x: hidden;
-  background: linear-gradient(160deg, #8f9dab 0%, var(--page) 48%, #7d8d9e 100%);
+  background: var(--page);
   color: var(--text);
   font-family: ui-rounded, "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: 16px;
@@ -57,15 +58,13 @@ a:focus-visible {
   position: relative;
   width: min(100%, 720px);
   margin: 0 auto;
-  padding: max(28px, env(safe-area-inset-top)) 16px max(44px, env(safe-area-inset-bottom));
+  padding: max(10px, env(safe-area-inset-top)) 14px max(10px, env(safe-area-inset-bottom));
   isolation: isolate;
 }
 
 .page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  position: relative;
+  display: block;
 }
 
 .eyebrow,
@@ -78,10 +77,12 @@ a:focus-visible {
 }
 
 .eyebrow {
+  padding-right: 104px;
   color: rgba(255, 253, 240, 0.82);
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
+  text-align: left;
 }
 
 h1,
@@ -90,31 +91,30 @@ p {
 }
 
 h1 {
-  margin-bottom: 0;
+  margin: 3px 0 0;
   color: var(--surface);
-  font-size: clamp(2.1rem, 9vw, 3.35rem);
+  font-size: clamp(1.8rem, 8vw, 2.55rem);
   font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 1.12;
 }
 
 .page-header {
-  flex-direction: column;
-  justify-content: center;
-  gap: 12px;
-  padding: 8px 0 26px;
+  padding: 0 0 12px;
   text-align: center;
 }
 
 .freshness {
-  flex: 0 0 auto;
-  padding: 6px 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 9px;
   border-radius: 999px;
   background: var(--surface);
   color: var(--text);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  box-shadow: 0 3px 0 rgba(67, 78, 91, 0.2);
+  box-shadow: none;
 }
 
 .freshness[data-state="fresh"] {
@@ -135,10 +135,10 @@ h1 {
 
 .demo-notice,
 .error-panel {
-  margin: 0 0 16px;
-  padding: 13px 15px;
-  border: 2px solid rgba(44, 93, 189, 0.22);
-  border-radius: 16px;
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(44, 93, 189, 0.22);
+  border-radius: 12px;
   background: var(--warning-soft);
   color: var(--warning);
   font-size: 0.86rem;
@@ -146,9 +146,9 @@ h1 {
 
 .summary {
   margin-top: 0;
-  padding: 22px 20px;
-  border: 2px solid rgba(255, 250, 241, 0.34);
-  border-radius: 24px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 250, 241, 0.34);
+  border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow);
   text-align: center;
@@ -156,39 +156,40 @@ h1 {
 
 .summary-label {
   color: var(--muted);
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
 
 .summary-value {
-  margin: 7px 0 0;
+  margin: 2px 0 0;
   color: var(--text);
-  font-size: clamp(1.5rem, 7vw, 2.2rem);
+  font-size: clamp(1.45rem, 6vw, 1.85rem);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  line-height: 1.35;
+  line-height: 1.2;
   letter-spacing: -0.025em;
 }
 
 .refresh-note {
-  margin-top: 18px;
-  padding: 11px 13px;
-  border-radius: 14px;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
   background: rgba(66, 77, 90, 0.22);
   color: rgba(255, 253, 240, 0.88);
-  font-size: 0.77rem;
+  font-size: 0.7rem;
   text-align: center;
 }
 
 .week {
-  margin-top: 24px;
+  margin-top: 10px;
 }
 
 .day-list {
   overflow: hidden;
-  padding: 6px 16px;
-  border: 2px solid rgba(255, 250, 241, 0.34);
-  border-radius: 24px;
+  padding: 2px 12px;
+  border: 1px solid rgba(255, 250, 241, 0.34);
+  border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
@@ -200,11 +201,11 @@ h1 {
 .day-row {
   display: grid;
   width: 100%;
-  min-height: 72px;
-  grid-template-columns: 82px minmax(0, 1fr);
+  min-height: 52px;
+  grid-template-columns: 76px minmax(0, 1fr);
   align-items: center;
-  gap: 12px;
-  padding: 13px 2px;
+  gap: 8px;
+  padding: 7px 2px;
 }
 
 .date-block {
@@ -224,7 +225,7 @@ h1 {
 
 .date-label {
   color: var(--text);
-  font-size: 0.94rem;
+  font-size: 0.86rem;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -232,7 +233,7 @@ h1 {
 .weekday-label,
 .day-summary {
   color: var(--muted);
-  font-size: 0.77rem;
+  font-size: 0.7rem;
 }
 
 .weekday-label {
@@ -256,16 +257,16 @@ h1 {
 .day-status {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   color: var(--text);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .day-status::before {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   flex: 0 0 auto;
   border-radius: 50%;
   background: var(--unavailable);
@@ -293,7 +294,7 @@ h1 {
 .day-summary {
   margin-left: auto;
   color: var(--text);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   text-align: right;
@@ -315,34 +316,36 @@ h1 {
 }
 
 .page-footer {
-  margin-top: 32px;
+  margin-top: 12px;
   text-align: center;
 }
 
 .booking-action {
   display: flex;
   width: 100%;
-  min-height: 56px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(255, 250, 241, 0.38);
-  border-radius: 18px;
+  border: 1px solid rgba(255, 250, 241, 0.38);
+  border-radius: 14px;
   background: var(--primary);
   color: var(--primary-text);
   font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 7px 0 rgba(67, 78, 91, 0.24);
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  font-size: 0.88rem;
+  box-shadow: none;
+  transition: background-color 160ms ease;
 }
 
 .booking-action:active {
-  box-shadow: 0 3px 0 rgba(67, 78, 91, 0.24);
-  transform: translateY(4px);
+  background: #ae695b;
 }
 
 .page-footer p {
-  margin-top: 12px;
+  margin-top: 6px;
   color: rgba(255, 253, 240, 0.78);
+  font-size: 0.68rem;
+  line-height: 1.4;
 }
 
 @media (max-width: 420px) {
@@ -351,8 +354,8 @@ h1 {
   }
 
   .day-row {
-    grid-template-columns: 72px minmax(0, 1fr);
-    gap: 8px;
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 7px;
   }
 
   .day-list {
@@ -361,7 +364,7 @@ h1 {
 
   .day-status,
   .day-summary {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
   }
 }
 
