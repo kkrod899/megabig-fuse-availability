@@ -21,26 +21,10 @@
       UI確認用データです。GitHub Actions接続後に実データへ切り替わります。
     </section>
 
-    <section class="condition-strip" aria-label="監視条件">
-      <span id="party-size">2名</span>
-      <span aria-hidden="true">・</span>
-      <span id="duration">30分単位で確認</span>
-      <span aria-hidden="true">・</span>
-      <span id="time-range">10:00〜17:00</span>
-    </section>
-
     <section class="summary" aria-labelledby="summary-title">
-      <p class="summary-label" id="summary-title">最初に空いている時間</p>
+      <p class="summary-label" id="summary-title">今日予約可能な時間帯</p>
       <p class="summary-value" id="earliest-slot">確認しています…</p>
-      <p class="summary-meta" id="checked-at">最終確認時刻を取得中</p>
     </section>
-
-    <div class="action-row">
-      <button class="primary-action" id="reload-button" type="button">
-        <span aria-hidden="true">↻</span>
-        最新データを再読込
-      </button>
-    </div>
 
     <p class="refresh-note" id="refresh-note">
       毎朝9時時点の、30分利用で確認できた空きを時間帯にまとめています。長時間利用は公式予約画面で最終確認してください。
@@ -60,8 +44,8 @@
     </section>
 
     <footer class="page-footer">
-      <a id="booking-link" href="https://big-echo.tottokun.com/ownedmedia/ownedmedia_immediately_be/gXmZjh9iVXzm67v" target="_blank" rel="noopener noreferrer">
-        公式予約画面を開く ↗
+      <a class="booking-action" id="booking-link" href="https://big-echo.tottokun.com/ownedmedia/ownedmedia_immediately_be/gXmZjh9iVXzm67v" target="_blank" rel="noopener noreferrer">
+        公式予約画面で確認する ↗
       </a>
       <p>空き状況は変わるため、予約前に公式画面で最終確認してください。</p>
     </footer>
@@ -69,7 +53,7 @@
 
   <template id="day-template">
     <article class="day-card">
-      <button class="day-toggle" type="button" aria-expanded="false">
+      <div class="day-row">
         <span class="date-block">
           <span class="date-label"></span>
           <span class="weekday-label"></span>
@@ -78,12 +62,6 @@
           <span class="day-status"></span>
           <span class="day-summary"></span>
         </span>
-        <span class="chevron" aria-hidden="true">⌄</span>
-      </button>
-      <div class="day-details" hidden>
-        <p class="detail-caption"></p>
-        <ul class="slot-list"></ul>
-        <p class="day-checked"></p>
       </div>
     </article>
   </template>
