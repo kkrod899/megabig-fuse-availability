@@ -73,7 +73,7 @@ a:focus-visible {
 
 .app-shell::before {
   top: 70px;
-  left: -8px;
+  left: 8px;
   content: "♪";
   font-size: 4.2rem;
   transform: rotate(-12deg);
@@ -81,7 +81,7 @@ a:focus-visible {
 
 .app-shell::after {
   top: 270px;
-  right: -2px;
+  right: 8px;
   content: "✦";
   font-size: 3rem;
   transform: rotate(12deg);
