@@ -1,0 +1,13 @@
+{
+  "name": "megabig-fuse-flat-availability",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scan": "node src/scan-megabig.mjs",
+    "check": "node --check src/scan-megabig.mjs && node --check site/config.js && node --check site/app.js"
+  },
+  "dependencies": {
+    "playwright": "1.61.0"
+  }
+}
