@@ -160,7 +160,13 @@ async function captureAvailabilityRefresh(page, runtime, targetDate, partySize, 
   const expected = dateRequestParams(targetDate);
   if (partySize !== undefined) expected.personnum = String(partySize);
   const availabilityPromise = waitForJsonResponse(page, "/AjaxOwned/reservableList", expected);
-  const actionResult = await action();
+  let actionResult;
+  try {
+    actionResult = await action();
+  } catch (error) {
+    await availabilityPromise.catch(() => {});
+    throw error;
+  }
   const availability = await availabilityPromise;
   await waitForApiIdle(page, runtime);
   await page.locator("#select_hours").waitFor({ state: "visible" });
@@ -246,16 +252,34 @@ function buildReservableTimes(availability) {
   );
 }
 
+async function getSelectableHours(page) {
+  return new Set(
+    await page.locator("#select_hours option").evaluateAll((options) =>
+      options.map((option) => option.value).filter(Boolean)
+    )
+  );
+}
+
 async function selectHour(page, runtime, date, hour) {
   const hours = page.locator("#select_hours");
   if ((await hours.inputValue()) === String(hour)) return;
+
+  await page.waitForFunction(
+    (expected) => [...document.querySelectorAll("#select_hours option")].some((option) => option.value === expected),
+    String(hour)
+  );
 
   const [year, month, day] = date.split("-");
   const minutesPromise = waitForJsonResponse(page, "/BussinessDaySetting/getMinuteList", {
     use_date: `${year}/${month}/${day}`,
     hour: pad(hour)
   });
-  await hours.selectOption(String(hour));
+  try {
+    await hours.selectOption(String(hour));
+  } catch (error) {
+    await minutesPromise.catch(() => {});
+    throw error;
+  }
   await minutesPromise;
   await waitForApiIdle(page, runtime);
 }
@@ -280,7 +304,12 @@ async function selectMinuteAndGetCourses(page, runtime, date, partySize, hour, m
     (expected) => [...document.querySelectorAll("#select_minutes option")].some((option) => option.value === expected),
     minuteValue
   );
-  await minutes.selectOption(minuteValue);
+  try {
+    await minutes.selectOption(minuteValue);
+  } catch (error) {
+    await Promise.allSettled([coursePromise, minuteListPromise]);
+    throw error;
+  }
   const [courses] = await Promise.all([coursePromise, minuteListPromise]);
   await waitForApiIdle(page, runtime);
   if (!Array.isArray(courses)) throw new Error("unexpected_course_response");
@@ -303,7 +332,12 @@ async function selectCourseAndGetRooms(page, runtime, date, partySize, timeKey, 
     (expected) => [...document.querySelectorAll("#selected_course_id option")].some((option) => option.value === expected),
     courseId
   );
-  await page.locator("#selected_course_id").selectOption(courseId);
+  try {
+    await page.locator("#selected_course_id").selectOption(courseId);
+  } catch (error) {
+    await roomsPromise.catch(() => {});
+    throw error;
+  }
   const rooms = await roomsPromise;
   await waitForApiIdle(page, runtime);
   if (!Array.isArray(rooms)) throw new Error("unexpected_room_response");
@@ -339,7 +373,10 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
   let totalSlots = 0;
   let consecutiveErrors = 0;
 
-  const timeOptions = buildTimeOptions(availability);
+  const selectableHours = await getSelectableHours(page);
+  const timeOptions = buildTimeOptions(availability).filter((timeKey) =>
+    selectableHours.has(String(Number(timeKey.slice(0, 2))))
+  );
   const reservableTimes = buildReservableTimes(availability);
   for (const timeKey of timeOptions) {
     const hour = Number(timeKey.slice(0, 2));
