@@ -2,7 +2,11 @@ name: Scan and deploy availability
 
 on:
   schedule:
-    - cron: "0 9 * * *"
+    # Avoid minute 0, when GitHub Actions scheduled runs are most likely to be
+    # delayed or dropped. The second entry is a fallback for a missed run.
+    - cron: "7 9 * * *"
+      timezone: "Asia/Tokyo"
+    - cron: "37 9 * * *"
       timezone: "Asia/Tokyo"
   workflow_dispatch:
 
@@ -11,7 +15,58 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check_freshness:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    outputs:
+      should_scan: ${{ steps.freshness.outputs.should_scan }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Check whether today's 9 AM result already exists
+        id: freshness
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node <<'NODE'
+          const fs = require("node:fs");
+
+          let generatedAt = Number.NaN;
+          try {
+            const latest = JSON.parse(fs.readFileSync("site/data/latest.json", "utf8"));
+            generatedAt = Date.parse(latest.generated_at);
+          } catch (error) {
+            console.log(`Could not read latest result: ${error.message}`);
+          }
+
+          const now = new Date();
+          const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+          const todayNineAmJst = Date.UTC(
+            jstNow.getUTCFullYear(),
+            jstNow.getUTCMonth(),
+            jstNow.getUTCDate(),
+            0,
+            0,
+            0
+          );
+          const alreadyFresh = Number.isFinite(generatedAt) && generatedAt >= todayNineAmJst;
+          const shouldScan = process.env.EVENT_NAME !== "schedule" || !alreadyFresh;
+
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `should_scan=${shouldScan}\n`);
+          console.log({
+            event: process.env.EVENT_NAME,
+            generatedAt: Number.isFinite(generatedAt) ? new Date(generatedAt).toISOString() : null,
+            todayNineAmJst: new Date(todayNineAmJst).toISOString(),
+            alreadyFresh,
+            shouldScan
+          });
+          NODE
+
   scan:
+    needs: check_freshness
+    if: ${{ needs.check_freshness.outputs.should_scan == 'true' }}
     permissions:
       contents: write
     runs-on: ubuntu-latest
