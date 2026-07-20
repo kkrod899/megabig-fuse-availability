@@ -10,6 +10,14 @@ const artifactDirectory = path.join(projectRoot, "artifacts");
 
 const normalizeText = (value) => String(value || "").replace(/\s+/g, " ").trim();
 const pad = (value) => String(value).padStart(2, "0");
+const apiRequestPaths = new Set([
+  "/AjaxOwned/reservableList",
+  "/BussinessDaySetting/getHourList",
+  "/BussinessDaySetting/getMinuteList",
+  "/AjaxOwned/getCourseList",
+  "/AjaxOwned/getSeatTypeList",
+  "/AjaxOwned/getCourseQuestions"
+]);
 
 function datePartsInTimezone(date, timeZone) {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -70,11 +78,114 @@ async function readJson(filePath, fallback = null) {
   }
 }
 
-async function selectTargetDate(page, targetDate) {
+function requestParams(response) {
+  return new URLSearchParams(response.request().postData() || "");
+}
+
+function matchesApiResponse(response, pathname, expectedParams = {}) {
+  let responsePath;
+  try {
+    responsePath = new URL(response.url()).pathname;
+  } catch {
+    return false;
+  }
+  if (responsePath !== pathname || response.request().method() !== "POST") return false;
+
+  const params = requestParams(response);
+  return Object.entries(expectedParams).every(([key, expected]) => {
+    if (expected === undefined || expected === null) return true;
+    const actual = params.get(key);
+    const expectedText = String(expected);
+    if (actual === expectedText) return true;
+    if (key === "use_date") {
+      return actual?.split("/").map(Number).join("/") === expectedText.split("/").map(Number).join("/");
+    }
+    return /^\d+$/.test(actual || "") && /^\d+$/.test(expectedText) && Number(actual) === Number(expectedText);
+  });
+}
+
+async function waitForJsonResponse(page, pathname, expectedParams = {}) {
+  const response = await page.waitForResponse(
+    (candidate) => matchesApiResponse(candidate, pathname, expectedParams),
+    { timeout: 20000 }
+  );
+  if (!response.ok()) throw new Error(`api_http_${response.status()}_${pathname}`);
+  try {
+    return await response.json();
+  } catch {
+    throw new Error(`api_invalid_json_${pathname}`);
+  }
+}
+
+function installApiTracker(page, runtime) {
+  const pending = new Set();
+  runtime.pendingApiRequests = pending;
+
+  const isTracked = (request) => {
+    try {
+      return apiRequestPaths.has(new URL(request.url()).pathname);
+    } catch {
+      return false;
+    }
+  };
+  page.on("request", (request) => {
+    if (isTracked(request)) pending.add(request);
+  });
+  const complete = (request) => pending.delete(request);
+  page.on("requestfinished", complete);
+  page.on("requestfailed", complete);
+}
+
+async function waitForApiIdle(page, runtime, timeoutMs = 30000) {
+  const deadline = Date.now() + timeoutMs;
+  let idleSince = null;
+  while (Date.now() < deadline) {
+    if (runtime.pendingApiRequests.size === 0) {
+      idleSince ??= Date.now();
+      if (Date.now() - idleSince >= 150) return;
+    } else {
+      idleSince = null;
+    }
+    await page.waitForTimeout(50);
+  }
+  throw new Error(`api_idle_timeout_${runtime.pendingApiRequests.size}`);
+}
+
+function dateRequestParams(targetDate) {
+  const [year, month, day] = targetDate.split("-");
+  return { y: year, m: month, d: day };
+}
+
+async function captureAvailabilityRefresh(page, runtime, targetDate, partySize, action) {
+  const expected = dateRequestParams(targetDate);
+  if (partySize !== undefined) expected.personnum = String(partySize);
+  const availabilityPromise = waitForJsonResponse(page, "/AjaxOwned/reservableList", expected);
+  const actionResult = await action();
+  const availability = await availabilityPromise;
+  await waitForApiIdle(page, runtime);
+  await page.locator("#select_hours").waitFor({ state: "visible" });
+  return { actionResult, availability };
+}
+
+async function loadBookingPage(page, runtime, bookingUrl, today) {
+  const { actionResult: response, availability } = await captureAvailabilityRefresh(
+    page,
+    runtime,
+    today,
+    undefined,
+    () => page.goto(bookingUrl, { waitUntil: "domcontentloaded" })
+  );
+  if (!response || [403, 429].includes(response.status())) {
+    throw new Error(`blocked_http_${response?.status() || "no_response"}`);
+  }
+  return availability;
+}
+
+async function selectTargetDate(page, runtime, targetDate, availability) {
   const selectedDateText = await page.getByRole("button", { name: "日付選択", exact: true }).innerText();
   const [year, month, day] = targetDate.split("-").map(Number);
   const expected = `${pad(month)} 月 ${pad(day)} 日`;
-  if (normalizeText(selectedDateText).includes(expected)) return true;
+  if (normalizeText(selectedDateText).includes(expected)) return { selected: true, availability };
 
   await page.getByRole("button", { name: "日付選択", exact: true }).click();
   let dateCell = page.locator(`.btn-owd[data-date="${targetDate}"]`);
@@ -90,64 +201,118 @@ async function selectTargetDate(page, targetDate) {
   if ((await dateCell.count()) !== 1) {
     const closeButton = page.getByRole("button", { name: "閉じる", exact: true });
     if ((await closeButton.count()) === 1) await closeButton.click();
-    return false;
+    return { selected: false, availability: null };
   }
 
-  await dateCell.click();
-  await page.locator("#select_hours").waitFor({ state: "visible" });
+  const refreshed = await captureAvailabilityRefresh(page, runtime, targetDate, undefined, () => dateCell.click());
   const currentText = await page.getByRole("button", { name: "日付選択", exact: true }).innerText();
-  return normalizeText(currentText).includes(expected);
+  return {
+    selected: normalizeText(currentText).includes(expected),
+    availability: refreshed.availability
+  };
 }
 
-async function waitForCourseOrUnavailable(page) {
-  await page.waitForFunction(() => {
-    if (document.querySelector("#selected_course_id")) return true;
-    const text = document.querySelector("main")?.textContent || "";
-    return text.includes("ご用意できません") || text.includes("予約できません");
+async function ensurePartySize(page, runtime, date, partySize, availability) {
+  const adult = page.locator("#selected_adult");
+  const current = await adult.inputValue();
+  if (current === String(partySize)) return availability;
+
+  const refreshed = await captureAvailabilityRefresh(page, runtime, date, partySize, () =>
+    adult.selectOption(String(partySize))
+  );
+  return refreshed.availability;
+}
+
+function normalizeApiTime(value) {
+  return String(value || "").replace(":", "").padStart(4, "0");
+}
+
+function buildTimeOptions(availability) {
+  const periods = availability?.reservation_period_result;
+  if (!periods || typeof periods !== "object") throw new Error("missing_reservation_period_result");
+
+  return [...new Set(Object.values(periods).flat().map(normalizeApiTime))]
+    .filter((value) => /^\d{4}$/.test(value))
+    .sort((left, right) => Number(left) - Number(right));
+}
+
+function buildReservableTimes(availability) {
+  const result = availability?.search_result;
+  if (!result || typeof result !== "object") throw new Error("missing_search_result");
+  return new Set(
+    Object.entries(result)
+      .filter(([, value]) => Boolean(value))
+      .map(([time]) => normalizeApiTime(time))
+  );
+}
+
+async function selectHour(page, runtime, date, hour) {
+  const hours = page.locator("#select_hours");
+  if ((await hours.inputValue()) === String(hour)) return;
+
+  const [year, month, day] = date.split("-");
+  const minutesPromise = waitForJsonResponse(page, "/BussinessDaySetting/getMinuteList", {
+    use_date: `${year}/${month}/${day}`,
+    hour: pad(hour)
+  });
+  await hours.selectOption(String(hour));
+  await minutesPromise;
+  await waitForApiIdle(page, runtime);
+}
+
+async function selectMinuteAndGetCourses(page, runtime, date, partySize, hour, minute, timeKey) {
+  const [year, month, day] = date.split("-");
+  const coursePromise = waitForJsonResponse(page, "/AjaxOwned/getCourseList", {
+    personnum: String(partySize),
+    y: year,
+    m: month,
+    d: day,
+    time: timeKey
+  });
+  const minuteListPromise = waitForJsonResponse(page, "/BussinessDaySetting/getMinuteList", {
+    use_date: `${year}/${month}/${day}`,
+    hour: pad(hour)
   });
 
-  return (await page.locator("#selected_course_id").count()) === 1;
-}
-
-async function waitForRoomResult(page) {
-  const loading = page.locator("#loading");
-  try {
-    await loading.waitFor({ state: "visible", timeout: 1200 });
-  } catch {
-    // Fast responses can finish before the loading overlay becomes observable.
-  }
-  await loading.waitFor({ state: "hidden", timeout: 12000 });
-  await page.waitForTimeout(250);
-
-  const roomNames = (await page.locator(".course-name-strong").allTextContents()).map(normalizeText).filter(Boolean);
-  if (roomNames.length) return { kind: "room_candidates", roomNames };
-
-  const mainText = normalizeText(await page.locator("main").innerText());
-  if (mainText.includes("ご用意できません") || mainText.includes("予約できません")) {
-    return { kind: "store_unavailable", roomNames: [] };
-  }
-  return { kind: "unknown", roomNames: [] };
-}
-
-async function getHours(page) {
-  return page.locator("#select_hours option").evaluateAll((options) =>
-    options
-      .map((option) => ({ value: option.value, text: option.textContent.trim() }))
-      .filter((option) => option.value !== "")
+  const minutes = page.locator("#select_minutes");
+  const minuteValue = pad(minute);
+  await page.waitForFunction(
+    (expected) => [...document.querySelectorAll("#select_minutes option")].some((option) => option.value === expected),
+    minuteValue
   );
+  await minutes.selectOption(minuteValue);
+  const [courses] = await Promise.all([coursePromise, minuteListPromise]);
+  await waitForApiIdle(page, runtime);
+  if (!Array.isArray(courses)) throw new Error("unexpected_course_response");
+  return courses;
 }
 
-async function getMinutes(page) {
-  return page.locator("#select_minutes option").evaluateAll((options) =>
-    options
-      .map((option) => ({ value: option.value, text: option.textContent.trim() }))
-      .filter((option) => option.value !== "")
+async function selectCourseAndGetRooms(page, runtime, date, partySize, timeKey, courseRow) {
+  const [year, month, day] = date.split("-");
+  const courseId = String(courseRow.course_id);
+  const roomsPromise = waitForJsonResponse(page, "/AjaxOwned/getSeatTypeList", {
+    personnum: String(partySize),
+    y: year,
+    m: month,
+    d: day,
+    time: timeKey,
+    courseId
+  });
+
+  await page.waitForFunction(
+    (expected) => [...document.querySelectorAll("#selected_course_id option")].some((option) => option.value === expected),
+    courseId
   );
+  await page.locator("#selected_course_id").selectOption(courseId);
+  const rooms = await roomsPromise;
+  await waitForApiIdle(page, runtime);
+  if (!Array.isArray(rooms)) throw new Error("unexpected_room_response");
+  return rooms.map((room) => normalizeText(room?.t_name).replace(/\/+$/, "")).filter(Boolean);
 }
 
-async function scanDay(page, config, date, runtime) {
-  const selected = await selectTargetDate(page, date);
-  if (!selected) {
+async function scanDay(page, config, date, runtime, initialAvailability) {
+  const selectedDate = await selectTargetDate(page, runtime, date, initialAvailability);
+  if (!selectedDate.selected) {
     return {
       date,
       scan_status: "success",
@@ -159,7 +324,13 @@ async function scanDay(page, config, date, runtime) {
     };
   }
 
-  await page.locator("#selected_adult").selectOption(String(config.partySize));
+  const availability = await ensurePartySize(
+    page,
+    runtime,
+    date,
+    config.partySize,
+    selectedDate.availability
+  );
   const available = [];
   const stateCounts = {};
   const startBoundary = timeToMinutes(runtime.timeFrom);
@@ -168,81 +339,93 @@ async function scanDay(page, config, date, runtime) {
   let totalSlots = 0;
   let consecutiveErrors = 0;
 
-  const hours = await getHours(page);
-  for (const hourOption of hours) {
-    const hour = Number(hourOption.value);
-    if (!Number.isFinite(hour)) continue;
-    if ((hour + 1) * 60 <= startBoundary || hour * 60 + config.durationMinutes > endBoundary) continue;
+  const timeOptions = buildTimeOptions(availability);
+  const reservableTimes = buildReservableTimes(availability);
+  for (const timeKey of timeOptions) {
+    const hour = Number(timeKey.slice(0, 2));
+    const minute = Number(timeKey.slice(2, 4));
+    const slotMinute = hour * 60 + minute;
+    if (
+      !Number.isFinite(hour) ||
+      !Number.isFinite(minute) ||
+      slotMinute < startBoundary ||
+      slotMinute + config.durationMinutes > endBoundary
+    ) continue;
+    totalSlots += 1;
 
-    await page.locator("#select_hours").selectOption(hourOption.value);
-    await page.waitForFunction(() => document.querySelectorAll("#select_minutes option").length > 1);
-    const minutes = await getMinutes(page);
+    const start = `${pad(hour)}:${pad(minute)}`;
+    const end = formatEndTime(hour, minute, config.durationMinutes);
+    const checkedAt = new Date().toISOString();
 
-    for (const minuteOption of minutes) {
-      const minute = Number(minuteOption.value);
-      const slotMinute = hour * 60 + minute;
-      if (
-        !Number.isFinite(minute) ||
-        slotMinute < startBoundary ||
-        slotMinute + config.durationMinutes > endBoundary
-      ) continue;
-      totalSlots += 1;
-
-      const start = `${pad(hour)}:${pad(minute)}`;
-      const end = formatEndTime(hour, minute, config.durationMinutes);
-      const checkedAt = new Date().toISOString();
-
-      try {
-        if (runtime.blockedResponse) {
-          throw new Error(`blocked_http_${runtime.blockedResponse}`);
-        }
-
-        await page.locator("#select_minutes").selectOption(minuteOption.value);
-        const courseAvailable = await waitForCourseOrUnavailable(page);
-        if (!courseAvailable) {
-          stateCounts.store_unavailable = (stateCounts.store_unavailable || 0) + 1;
-          checkedSlots += 1;
-          consecutiveErrors = 0;
-          console.log(`${date} ${start} store_unavailable`);
-          await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
-          continue;
-        }
-
-        const course = page.locator("#selected_course_id");
-        const label = durationLabel(config.durationMinutes);
-        const labels = await course.locator("option").allTextContents();
-        if (!labels.map(normalizeText).includes(label)) {
-          stateCounts.unknown = (stateCounts.unknown || 0) + 1;
-          checkedSlots += 1;
-          consecutiveErrors = 0;
-          console.log(`${date} ${start} duration_unavailable`);
-          await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
-          continue;
-        }
-
-        await course.selectOption({ label });
-        const result = await waitForRoomResult(page);
-        let state = result.kind;
-        if (result.kind === "room_candidates") {
-          state = result.roomNames.includes(config.roomName) ? "reservable" : "not_reservable";
-        }
-        stateCounts[state] = (stateCounts[state] || 0) + 1;
-        checkedSlots += 1;
-        consecutiveErrors = 0;
-
-        if (state === "reservable") {
-          available.push({ start, end, state, checked_at: checkedAt });
-        }
-        console.log(`${date} ${start} ${state}`);
-      } catch (error) {
-        consecutiveErrors += 1;
-        stateCounts.error = (stateCounts.error || 0) + 1;
-        console.error(`${date} ${start} error: ${error.message}`);
-        if (runtime.blockedResponse || consecutiveErrors >= 5) throw error;
+    try {
+      if (runtime.blockedResponse) {
+        throw new Error(`blocked_http_${runtime.blockedResponse}`);
       }
 
-      await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
+      if (!reservableTimes.has(timeKey)) {
+        stateCounts.store_unavailable = (stateCounts.store_unavailable || 0) + 1;
+        checkedSlots += 1;
+        consecutiveErrors = 0;
+        console.log(`${date} ${start} store_unavailable`);
+        await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
+        continue;
+      }
+
+      await selectHour(page, runtime, date, hour);
+      const courses = await selectMinuteAndGetCourses(
+        page,
+        runtime,
+        date,
+        config.partySize,
+        hour,
+        minute,
+        timeKey
+      );
+      if (courses.length === 0) {
+        stateCounts.store_unavailable = (stateCounts.store_unavailable || 0) + 1;
+        checkedSlots += 1;
+        consecutiveErrors = 0;
+        console.log(`${date} ${start} store_unavailable`);
+        await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
+        continue;
+      }
+
+      const label = durationLabel(config.durationMinutes);
+      const courseRow = courses.find((course) => normalizeText(course?.reserve_coursename) === label);
+      if (!courseRow?.course_id) {
+        stateCounts.unknown = (stateCounts.unknown || 0) + 1;
+        checkedSlots += 1;
+        consecutiveErrors = 0;
+        console.log(`${date} ${start} duration_unavailable`);
+        await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
+        continue;
+      }
+
+      const roomNames = await selectCourseAndGetRooms(
+        page,
+        runtime,
+        date,
+        config.partySize,
+        timeKey,
+        courseRow
+      );
+      const state = roomNames.includes(config.roomName) ? "reservable" : "not_reservable";
+      stateCounts[state] = (stateCounts[state] || 0) + 1;
+      checkedSlots += 1;
+      consecutiveErrors = 0;
+
+      if (state === "reservable") {
+        available.push({ start, end, state, checked_at: checkedAt });
+      }
+      console.log(`${date} ${start} ${state} rooms=${roomNames.join("|") || "none"}`);
+    } catch (error) {
+      consecutiveErrors += 1;
+      stateCounts.error = (stateCounts.error || 0) + 1;
+      console.error(`${date} ${start} error: ${error.message}`);
+      if (runtime.blockedResponse || consecutiveErrors >= 5) throw error;
     }
+
+    await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
   }
 
   const status = stateCounts.error || checkedSlots < totalSlots ? "partial" : "success";
@@ -298,19 +481,15 @@ async function main() {
   page.on("response", (response) => {
     if ([403, 429].includes(response.status())) runtime.blockedResponse = response.status();
   });
+  installApiTracker(page, runtime);
 
   const scannedDays = new Map();
   let fatalError = null;
   try {
-    const response = await page.goto(config.bookingUrl, { waitUntil: "domcontentloaded" });
-    if (!response || [403, 429].includes(response.status())) {
-      throw new Error(`blocked_http_${response?.status() || "no_response"}`);
-    }
-    await page.locator("#select_hours").waitFor({ state: "visible" });
-
     for (const date of targetDates.slice(0, scanLimitDays)) {
       console.log(`scan_start ${date}`);
-      scannedDays.set(date, await scanDay(page, config, date, runtime));
+      const initialAvailability = await loadBookingPage(page, runtime, config.bookingUrl, today);
+      scannedDays.set(date, await scanDay(page, config, date, runtime, initialAvailability));
     }
   } catch (error) {
     fatalError = error;
