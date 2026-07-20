@@ -1,3 +1,10 @@
+import {
+  availableRanges,
+  dateStringInJst,
+  dayPresentation,
+  isDatasetCurrent
+} from "./availability-policy.mjs?v=20260720-safe-empty";
+
 (() => {
   "use strict";
 
@@ -103,17 +110,6 @@
     return "weekday";
   }
 
-  function dateStringInJst(date = new Date()) {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      timeZone: "Asia/Tokyo"
-    }).formatToParts(date);
-    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-    return `${values.year}-${values.month}-${values.day}`;
-  }
-
   function ageLabel(value) {
     if (!value) return { label: "未取得", state: "error" };
     const diffMinutes = Math.max(0, Math.floor((Date.now() - new Date(value).getTime()) / 60000));
@@ -131,77 +127,12 @@
     };
   }
 
-  function availableSlots(day) {
-    return (day.slots || []).filter((slot) => slot.state === "reservable");
-  }
-
-  function timeToMinutes(value) {
-    const normalized = String(value || "").replace(/^翌/, "");
-    const [hours, minutes] = normalized.split(":").map(Number);
-    if (!Number.isFinite(hours) || !Number.isFinite(minutes)) return null;
-    return hours * 60 + minutes + (String(value).startsWith("翌") ? 1440 : 0);
-  }
-
-  function minutesToTime(value) {
-    const normalized = value % 1440;
-    const clock = `${String(Math.floor(normalized / 60)).padStart(2, "0")}:${String(normalized % 60).padStart(2, "0")}`;
-    return value >= 1440 ? `翌${clock}` : clock;
-  }
-
-  function availableRanges(day) {
-    const intervals = availableSlots(day)
-      .map((slot) => ({ start: timeToMinutes(slot.start), end: timeToMinutes(slot.end) }))
-      .filter((slot) => Number.isFinite(slot.start) && Number.isFinite(slot.end) && slot.end > slot.start)
-      .sort((a, b) => a.start - b.start || a.end - b.end);
-
-    return intervals.reduce((ranges, interval) => {
-      const current = ranges[ranges.length - 1];
-      if (!current || interval.start > current.end) {
-        ranges.push({ ...interval });
-      } else {
-        current.end = Math.max(current.end, interval.end);
-      }
-      return ranges;
-    }, []).map((range) => ({
-      start: minutesToTime(range.start),
-      end: minutesToTime(range.end)
-    }));
-  }
-
-  function dayPresentation(day) {
-    const ranges = availableRanges(day);
-    if (ranges.length) {
-      const preview = ranges.slice(0, 2).map((range) => `${range.start}〜${range.end}`).join(" / ");
-      const remainder = ranges.length > 2 ? ` ほか${ranges.length - 2}時間帯` : "";
-      return {
-        state: "available",
-        status: "予約可能",
-        summary: `${preview}${remainder}`
-      };
-    }
-
-    const status = day.scan_status || "pending";
-    if (status === "success") {
-      return { state: "unavailable", status: "空き時間なし", summary: "" };
-    }
-    if (status === "partial") {
-      return { state: "partial", status: "確認途中", summary: "" };
-    }
-    if (status === "error") {
-      return { state: "error", status: "確認失敗", summary: "" };
-    }
-    if (status === "blocked") {
-      return { state: "blocked", status: "自動確認停止", summary: "" };
-    }
-    return { state: "pending", status: "確認待ち", summary: "" };
-  }
-
-  function renderDay(day) {
+  function renderDay(day, datasetCurrent) {
     const fragment = elements.dayTemplate.content.cloneNode(true);
     const row = fragment.querySelector(".day-row");
     const dateChip = fragment.querySelector(".date-chip");
     const date = parseDay(day.date);
-    const presentation = dayPresentation(day);
+    const presentation = dayPresentation(day, { datasetCurrent });
 
     dateChip.dataset.dayType = dayType(day.date);
     dateChip.setAttribute("aria-label", fullDateFormatter.format(date));
@@ -216,29 +147,30 @@
   function render(data) {
     const target = data.target || {};
     const days = Array.isArray(data.days) ? data.days : [];
+    const datasetCurrent = isDatasetCurrent(data);
     elements.demoNotice.hidden = !data.demo;
     elements.bookingLink.href = target.booking_url || elements.bookingLink.href;
 
     const age = ageLabel(data.generated_at);
     elements.freshness.textContent = age.label;
-    elements.freshness.dataset.state = data.demo ? "partial" : age.state;
+    elements.freshness.dataset.state = data.demo ? "partial" : (datasetCurrent ? age.state : "stale");
     const today = days.find((day) => day.date === dateStringInJst());
-    const todayRanges = today ? availableRanges(today) : [];
+    const todayRanges = datasetCurrent && today ? availableRanges(today) : [];
     if (todayRanges.length) {
       elements.earliestSlot.textContent = todayRanges
         .map((range) => `${range.start}〜${range.end}`)
         .join(" / ");
+    } else if (!datasetCurrent) {
+      elements.earliestSlot.textContent = "本日の取得待ち";
     } else if (!today) {
       elements.earliestSlot.textContent = "今日のデータなし";
-    } else if (["pending", "partial"].includes(today.scan_status)) {
-      elements.earliestSlot.textContent = "今日の確認待ち";
     } else {
-      elements.earliestSlot.textContent = "今日は空き時間なし";
+      elements.earliestSlot.textContent = dayPresentation(today, { datasetCurrent }).status;
     }
 
     elements.dayList.replaceChildren();
     days.forEach((day) => {
-      elements.dayList.appendChild(renderDay(day));
+      elements.dayList.appendChild(renderDay(day, datasetCurrent));
     });
 
     elements.errorPanel.hidden = true;
