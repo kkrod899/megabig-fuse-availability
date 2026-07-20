@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "scan": "node src/scan-megabig.mjs",
-    "check": "node --check src/scan-megabig.mjs && node --check site/config.js && node --check site/app.js"
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/scan-megabig.mjs && node --check site/config.js && node --check site/app.js && node --check site/availability-policy.mjs && npm test"
   },
   "dependencies": {
     "playwright": "1.61.0"
