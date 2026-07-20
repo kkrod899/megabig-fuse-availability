@@ -1,6 +1,16 @@
 name: Scan and deploy availability
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "config/**"
+      - "tests/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/scan-and-deploy.yml"
   schedule:
     # Avoid minute 0, when GitHub Actions scheduled runs are most likely to be
     # delayed or dropped. The second entry is a fallback for a missed run.
