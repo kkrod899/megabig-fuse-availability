@@ -79,6 +79,9 @@ export function dayPresentation(day, { datasetCurrent = true } = {}) {
   if (!datasetCurrent) {
     return { state: "pending", status: "本日の取得待ち", summary: "" };
   }
+  if (day?.scan_status === "expired") {
+    return { state: "expired", status: "本日の対象時間終了", summary: "" };
+  }
   if (isDayCoverageComplete(day) && day?.negative_result_confirmed === true) {
     // A scraper can prove what it checked, but it cannot prove that an external
     // reservation service is infallible. Never make a categorical no-vacancy claim.
@@ -91,4 +94,3 @@ export function dayPresentation(day, { datasetCurrent = true } = {}) {
   if (status === "blocked") return { state: "blocked", status: "自動確認停止", summary: "" };
   return { state: "pending", status: "確認不完全・公式確認", summary: "" };
 }
-

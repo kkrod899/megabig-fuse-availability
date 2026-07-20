@@ -34,6 +34,17 @@ function dateStringInTimezone(date, timeZone) {
   return `${parts.year}-${parts.month}-${parts.day}`;
 }
 
+function currentMinutesInTimezone(date, timeZone) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return Number(values.hour) * 60 + Number(values.minute);
+}
+
 function addCalendarDays(dateString, days, timeZone) {
   const anchor = new Date(`${dateString}T12:00:00+09:00`);
   anchor.setUTCDate(anchor.getUTCDate() + days);
@@ -495,13 +506,17 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
     await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
   }
 
-  const coverageComplete = totalSlots > 0 && !stateCounts.error && checkedSlots === totalSlots;
-  const status = coverageComplete ? "success" : "partial";
+  const targetWindowExpired = date === runtime.today
+    && currentMinutesInTimezone(new Date(), runtime.timezone) > endBoundary - config.durationMinutes;
+  const expiredWithoutCandidates = totalSlots === 0 && targetWindowExpired;
+  const coverageComplete = expiredWithoutCandidates
+    || (totalSlots > 0 && !stateCounts.error && checkedSlots === totalSlots);
+  const status = expiredWithoutCandidates ? "expired" : (coverageComplete ? "success" : "partial");
   return {
     date,
     scan_status: status,
     coverage_complete: coverageComplete,
-    negative_result_confirmed: coverageComplete && available.length === 0,
+    negative_result_confirmed: status === "success" && coverageComplete && available.length === 0,
     checked_slot_count: checkedSlots,
     total_slot_count: totalSlots,
     checked_at: new Date().toISOString(),
@@ -538,6 +553,8 @@ async function main() {
   const scanLimitDays = Math.max(1, Math.min(config.daysAhead, Number(process.env.SCAN_LIMIT_DAYS || config.daysAhead)));
   const delayOverride = process.env.SCAN_DELAY_MS === undefined ? null : Number(process.env.SCAN_DELAY_MS);
   const runtime = {
+    today,
+    timezone: config.timezone,
     timeFrom: process.env.SCAN_TIME_FROM || config.timeFrom,
     timeTo: process.env.SCAN_TIME_TO || config.timeTo,
     delayMinMs: delayOverride === null ? config.delayMinMs : delayOverride,

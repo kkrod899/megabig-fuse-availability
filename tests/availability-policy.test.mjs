@@ -84,3 +84,16 @@ test("today's successful dataset is current", () => {
   assert.equal(isDatasetCurrent(data, now), true);
 });
 
+test("an elapsed same-day window is explicit and never presented as no availability", () => {
+  const day = {
+    scan_status: "expired",
+    coverage_complete: true,
+    negative_result_confirmed: false,
+    checked_slot_count: 0,
+    total_slot_count: 0,
+    slots: []
+  };
+  const presentation = dayPresentation(day);
+  assert.equal(presentation.status, "本日の対象時間終了");
+  assert.doesNotMatch(presentation.status, /空き.*なし|ありません/);
+});

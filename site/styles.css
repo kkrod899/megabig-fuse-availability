@@ -217,7 +217,8 @@ h1 {
 
 .day-row[data-state="unavailable"] .day-time,
 .day-row[data-state="pending"] .day-time,
-.day-row[data-state="partial"] .day-time {
+.day-row[data-state="partial"] .day-time,
+.day-row[data-state="expired"] .day-time {
   color: var(--unavailable);
 }
 
