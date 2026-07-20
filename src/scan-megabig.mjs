@@ -349,11 +349,15 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
   if (!selectedDate.selected) {
     return {
       date,
-      scan_status: "success",
+      scan_status: "partial",
+      coverage_complete: false,
+      negative_result_confirmed: false,
       checked_slot_count: 0,
       total_slot_count: 0,
       checked_at: new Date().toISOString(),
       slots: [],
+      slot_checks: [],
+      candidate_start_times: [],
       state_counts: { not_selectable: 1 }
     };
   }
@@ -366,6 +370,8 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
     selectedDate.availability
   );
   const available = [];
+  const slotChecks = [];
+  const candidateStartTimes = [];
   const stateCounts = {};
   const startBoundary = timeToMinutes(runtime.timeFrom);
   const endBoundary = timeToMinutes(runtime.timeTo);
@@ -393,19 +399,11 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
     const start = `${pad(hour)}:${pad(minute)}`;
     const end = formatEndTime(hour, minute, config.durationMinutes);
     const checkedAt = new Date().toISOString();
+    candidateStartTimes.push(start);
 
     try {
       if (runtime.blockedResponse) {
         throw new Error(`blocked_http_${runtime.blockedResponse}`);
-      }
-
-      if (!reservableTimes.has(timeKey)) {
-        stateCounts.store_unavailable = (stateCounts.store_unavailable || 0) + 1;
-        checkedSlots += 1;
-        consecutiveErrors = 0;
-        console.log(`${date} ${start} store_unavailable`);
-        await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
-        continue;
       }
 
       await selectHour(page, runtime, date, hour);
@@ -419,10 +417,18 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
         timeKey
       );
       if (courses.length === 0) {
-        stateCounts.store_unavailable = (stateCounts.store_unavailable || 0) + 1;
+        stateCounts.not_reservable = (stateCounts.not_reservable || 0) + 1;
         checkedSlots += 1;
         consecutiveErrors = 0;
-        console.log(`${date} ${start} store_unavailable`);
+        slotChecks.push({
+          start,
+          end,
+          state: "not_reservable",
+          evidence: "exact_course_api_empty",
+          store_advertised_available: reservableTimes.has(timeKey),
+          checked_at: checkedAt
+        });
+        console.log(`${date} ${start} not_reservable courses=none`);
         await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
         continue;
       }
@@ -430,9 +436,17 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
       const label = durationLabel(config.durationMinutes);
       const courseRow = courses.find((course) => normalizeText(course?.reserve_coursename) === label);
       if (!courseRow?.course_id) {
-        stateCounts.unknown = (stateCounts.unknown || 0) + 1;
+        stateCounts.not_reservable = (stateCounts.not_reservable || 0) + 1;
         checkedSlots += 1;
         consecutiveErrors = 0;
+        slotChecks.push({
+          start,
+          end,
+          state: "not_reservable",
+          evidence: "duration_not_offered",
+          store_advertised_available: reservableTimes.has(timeKey),
+          checked_at: checkedAt
+        });
         console.log(`${date} ${start} duration_unavailable`);
         await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
         continue;
@@ -450,6 +464,14 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
       stateCounts[state] = (stateCounts[state] || 0) + 1;
       checkedSlots += 1;
       consecutiveErrors = 0;
+      slotChecks.push({
+        start,
+        end,
+        state,
+        evidence: "exact_room_api",
+        store_advertised_available: reservableTimes.has(timeKey),
+        checked_at: checkedAt
+      });
 
       if (state === "reservable") {
         available.push({ start, end, state, checked_at: checkedAt });
@@ -458,6 +480,14 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
     } catch (error) {
       consecutiveErrors += 1;
       stateCounts.error = (stateCounts.error || 0) + 1;
+      slotChecks.push({
+        start,
+        end,
+        state: "error",
+        evidence: "probe_failed",
+        error: error.message,
+        checked_at: checkedAt
+      });
       console.error(`${date} ${start} error: ${error.message}`);
       if (runtime.blockedResponse || consecutiveErrors >= 5) throw error;
     }
@@ -465,14 +495,19 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
     await page.waitForTimeout(randomDelay(runtime.delayMinMs, runtime.delayMaxMs));
   }
 
-  const status = stateCounts.error || checkedSlots < totalSlots ? "partial" : "success";
+  const coverageComplete = totalSlots > 0 && !stateCounts.error && checkedSlots === totalSlots;
+  const status = coverageComplete ? "success" : "partial";
   return {
     date,
     scan_status: status,
+    coverage_complete: coverageComplete,
+    negative_result_confirmed: coverageComplete && available.length === 0,
     checked_slot_count: checkedSlots,
     total_slot_count: totalSlots,
     checked_at: new Date().toISOString(),
     slots: available,
+    slot_checks: slotChecks,
+    candidate_start_times: candidateStartTimes,
     state_counts: stateCounts
   };
 }
@@ -481,10 +516,14 @@ function pendingDay(date) {
   return {
     date,
     scan_status: "pending",
+    coverage_complete: false,
+    negative_result_confirmed: false,
     checked_slot_count: 0,
     total_slot_count: 0,
     checked_at: null,
-    slots: []
+    slots: [],
+    slot_checks: [],
+    candidate_start_times: []
   };
 }
 
@@ -539,6 +578,8 @@ async function main() {
 
   const previousDays = new Map((existing?.days || []).map((day) => [day.date, day]));
   const days = targetDates.map((date) => scannedDays.get(date) || previousDays.get(date) || pendingDay(date));
+  const scannedCoverageComplete = [...scannedDays.values()].every((day) => day.coverage_complete === true);
+  const scanComplete = !fatalError && scannedDays.size === scanLimitDays && scannedCoverageComplete;
   const generatedAt = new Date().toISOString();
   const output = {
     schema_version: "1.0",
@@ -554,16 +595,18 @@ async function main() {
       booking_url: config.bookingUrl
     },
     scan: {
-      status: fatalError ? (runtime.blockedResponse ? "blocked" : "partial") : "success",
+      status: fatalError
+        ? (runtime.blockedResponse ? "blocked" : "partial")
+        : (scanComplete ? "success" : "partial"),
       scanned_days: [...scannedDays.keys()],
-      error: fatalError ? fatalError.message : null
+      error: fatalError ? fatalError.message : (scanComplete ? null : "incomplete_slot_coverage")
     },
     days
   };
 
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
   console.log(`output ${outputPath}`);
-  if (fatalError) process.exitCode = 1;
+  if (fatalError || !scanComplete) process.exitCode = 1;
 }
 
 await main();
