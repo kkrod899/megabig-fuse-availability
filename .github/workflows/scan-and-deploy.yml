@@ -12,17 +12,19 @@ on:
       - "package-lock.json"
       - ".github/workflows/scan-and-deploy.yml"
   schedule:
-    # Avoid minute 0, when GitHub Actions scheduled runs are most likely to be
-    # delayed or dropped. The second entry is a fallback for a missed run.
-    - cron: "7 9 * * *"
-      timezone: "Asia/Tokyo"
-    - cron: "37 9 * * *"
-      timezone: "Asia/Tokyo"
+    # GitHub's scheduler can delay or drop individual scheduled events. Run a
+    # lightweight freshness check several times during 09:00-10:59 JST and do
+    # the expensive scan only until today's result has been saved.
+    # 00:07-01:47 UTC = 09:07-10:47 JST.
+    - cron: "7,27,47 0-1 * * *"
   workflow_dispatch:
 
 concurrency:
   group: megabig-scan-pages
-  cancel-in-progress: true
+  # A delayed fallback must never cancel a scan that is already collecting the
+  # seven-day result. Once that scan finishes, the queued run exits at the
+  # freshness check above.
+  cancel-in-progress: false
 
 jobs:
   check_freshness:
