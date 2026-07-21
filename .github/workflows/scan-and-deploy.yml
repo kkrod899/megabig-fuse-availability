@@ -46,9 +46,11 @@ jobs:
           const fs = require("node:fs");
 
           let generatedAt = Number.NaN;
+          let latestStatus = null;
           try {
             const latest = JSON.parse(fs.readFileSync("site/data/latest.json", "utf8"));
             generatedAt = Date.parse(latest.generated_at);
+            latestStatus = latest.scan?.status || null;
           } catch (error) {
             console.log(`Could not read latest result: ${error.message}`);
           }
@@ -63,13 +65,16 @@ jobs:
             0,
             0
           );
-          const alreadyFresh = Number.isFinite(generatedAt) && generatedAt >= todayNineAmJst;
+          const alreadyFresh = Number.isFinite(generatedAt)
+            && generatedAt >= todayNineAmJst
+            && latestStatus === "success";
           const shouldScan = process.env.EVENT_NAME !== "schedule" || !alreadyFresh;
 
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `should_scan=${shouldScan}\n`);
           console.log({
             event: process.env.EVENT_NAME,
             generatedAt: Number.isFinite(generatedAt) ? new Date(generatedAt).toISOString() : null,
+            latestStatus,
             todayNineAmJst: new Date(todayNineAmJst).toISOString(),
             alreadyFresh,
             shouldScan
@@ -83,6 +88,8 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    outputs:
+      scan_succeeded: ${{ steps.scan_result.outcome == 'success' }}
     env:
       SCAN_LIMIT_DAYS: "7"
     steps:
@@ -105,9 +112,12 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Scan reservation page
+        id: scan_result
+        continue-on-error: true
         run: npm run scan
 
       - name: Save latest result
+        if: ${{ always() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -120,7 +130,7 @@ jobs:
           fi
 
       - name: Upload failure diagnostics
-        if: ${{ failure() }}
+        if: ${{ steps.scan_result.outcome == 'failure' }}
         uses: actions/upload-artifact@v5
         with:
           name: megabig-scan-diagnostics-${{ github.run_id }}
@@ -163,3 +173,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  report-scan-failure:
+    permissions: {}
+    runs-on: ubuntu-latest
+    needs:
+      - scan
+      - deploy-pages
+    if: ${{ always() && needs.scan.result != 'skipped' && needs.scan.outputs.scan_succeeded != 'true' }}
+    steps:
+      - name: Mark incomplete scan for Actions visibility
+        run: |
+          echo "The latest partial result was published safely and will be retried by the next scheduled run."
+          exit 1

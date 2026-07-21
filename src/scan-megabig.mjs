@@ -389,6 +389,14 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
   const stateCounts = {};
   const startBoundary = timeToMinutes(runtime.timeFrom);
   const endBoundary = timeToMinutes(runtime.timeTo);
+  const currentMinute = date === runtime.today
+    ? currentMinutesInTimezone(new Date(), runtime.timezone)
+    : Number.NEGATIVE_INFINITY;
+  // A catch-up run cannot verify already elapsed start times. Also leave one
+  // 15-minute booking increment so an option does not disappear mid-probe.
+  const effectiveStartBoundary = date === runtime.today
+    ? Math.max(startBoundary, Math.ceil((currentMinute + 15) / 15) * 15)
+    : startBoundary;
   let checkedSlots = 0;
   let totalSlots = 0;
   let consecutiveErrors = 0;
@@ -405,7 +413,7 @@ async function scanDay(page, config, date, runtime, initialAvailability) {
     if (
       !Number.isFinite(hour) ||
       !Number.isFinite(minute) ||
-      slotMinute < startBoundary ||
+      slotMinute < effectiveStartBoundary ||
       slotMinute + config.durationMinutes > endBoundary
     ) continue;
     totalSlots += 1;
