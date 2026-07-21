@@ -297,6 +297,16 @@ async function selectHour(page, runtime, date, hour) {
 
 async function selectMinuteAndGetCourses(page, runtime, date, partySize, hour, minute, timeKey) {
   const [year, month, day] = date.split("-");
+  const minutes = page.locator("#select_minutes");
+  const minuteValue = pad(minute);
+  await page.waitForFunction(
+    (expected) => [...document.querySelectorAll("#select_minutes option")].some((option) => option.value === expected),
+    minuteValue
+  );
+
+  // Arm response listeners only after the option is actually selectable. If
+  // the option never appears, pre-created waitForResponse promises keep running
+  // after this probe is caught and later crash Node as unhandled rejections.
   const coursePromise = waitForJsonResponse(page, "/AjaxOwned/getCourseList", {
     personnum: String(partySize),
     y: year,
@@ -308,13 +318,6 @@ async function selectMinuteAndGetCourses(page, runtime, date, partySize, hour, m
     use_date: `${year}/${month}/${day}`,
     hour: pad(hour)
   });
-
-  const minutes = page.locator("#select_minutes");
-  const minuteValue = pad(minute);
-  await page.waitForFunction(
-    (expected) => [...document.querySelectorAll("#select_minutes option")].some((option) => option.value === expected),
-    minuteValue
-  );
   try {
     await minutes.selectOption(minuteValue);
   } catch (error) {
@@ -330,6 +333,11 @@ async function selectMinuteAndGetCourses(page, runtime, date, partySize, hour, m
 async function selectCourseAndGetRooms(page, runtime, date, partySize, timeKey, courseRow) {
   const [year, month, day] = date.split("-");
   const courseId = String(courseRow.course_id);
+  await page.waitForFunction(
+    (expected) => [...document.querySelectorAll("#selected_course_id option")].some((option) => option.value === expected),
+    courseId
+  );
+
   const roomsPromise = waitForJsonResponse(page, "/AjaxOwned/getSeatTypeList", {
     personnum: String(partySize),
     y: year,
@@ -338,11 +346,6 @@ async function selectCourseAndGetRooms(page, runtime, date, partySize, timeKey, 
     time: timeKey,
     courseId
   });
-
-  await page.waitForFunction(
-    (expected) => [...document.querySelectorAll("#selected_course_id option")].some((option) => option.value === expected),
-    courseId
-  );
   try {
     await page.locator("#selected_course_id").selectOption(courseId);
   } catch (error) {
