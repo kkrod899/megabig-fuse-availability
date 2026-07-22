@@ -18,7 +18,19 @@ on:
     # 00:07-01:47 UTC = 09:07-10:47 JST.
     - cron: "7,27,47 0-1 * * *"
   workflow_call:
+    inputs:
+      force_scan:
+        description: Ignore today's successful result and scan again
+        required: false
+        type: boolean
+        default: false
   workflow_dispatch:
+    inputs:
+      force_scan:
+        description: Ignore today's successful result and scan again
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: megabig-scan-pages
@@ -42,6 +54,7 @@ jobs:
         id: freshness
         env:
           EVENT_NAME: ${{ github.event_name }}
+          FORCE_SCAN: ${{ inputs.force_scan || false }}
         run: |
           node <<'NODE'
           const fs = require("node:fs");
@@ -69,7 +82,8 @@ jobs:
           const alreadyFresh = Number.isFinite(generatedAt)
             && generatedAt >= todayEightAmJst
             && latestStatus === "success";
-          const shouldScan = process.env.EVENT_NAME !== "schedule" || !alreadyFresh;
+          const forceScan = process.env.FORCE_SCAN === "true";
+          const shouldScan = forceScan || process.env.EVENT_NAME === "push" || !alreadyFresh;
 
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `should_scan=${shouldScan}\n`);
           console.log({
@@ -78,6 +92,7 @@ jobs:
             latestStatus,
             todayEightAmJst: new Date(todayEightAmJst).toISOString(),
             alreadyFresh,
+            forceScan,
             shouldScan
           });
           NODE
