@@ -17,6 +17,7 @@ on:
     # the expensive scan only until today's result has been saved.
     # 00:07-01:47 UTC = 09:07-10:47 JST.
     - cron: "7,27,47 0-1 * * *"
+  workflow_call:
   workflow_dispatch:
 
 concurrency:
@@ -37,7 +38,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Check whether today's 9 AM result already exists
+      - name: Check whether today's morning result already exists
         id: freshness
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -57,16 +58,16 @@ jobs:
 
           const now = new Date();
           const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000);
-          const todayNineAmJst = Date.UTC(
+          const todayEightAmJst = Date.UTC(
             jstNow.getUTCFullYear(),
             jstNow.getUTCMonth(),
             jstNow.getUTCDate(),
-            0,
+            -1,
             0,
             0
           );
           const alreadyFresh = Number.isFinite(generatedAt)
-            && generatedAt >= todayNineAmJst
+            && generatedAt >= todayEightAmJst
             && latestStatus === "success";
           const shouldScan = process.env.EVENT_NAME !== "schedule" || !alreadyFresh;
 
@@ -75,7 +76,7 @@ jobs:
             event: process.env.EVENT_NAME,
             generatedAt: Number.isFinite(generatedAt) ? new Date(generatedAt).toISOString() : null,
             latestStatus,
-            todayNineAmJst: new Date(todayNineAmJst).toISOString(),
+            todayEightAmJst: new Date(todayEightAmJst).toISOString(),
             alreadyFresh,
             shouldScan
           });
