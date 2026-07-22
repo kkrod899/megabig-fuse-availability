@@ -1,0 +1,16 @@
+name: Morning availability scheduler
+
+on:
+  schedule:
+    # A dedicated workflow avoids relying on the stale schedule registration of
+    # scan-and-deploy.yml. 23:07-01:52 UTC = 08:07-10:52 JST.
+    - cron: "7,22,37,52 23,0-1 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-availability-scan:
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/scan-and-deploy.yml
