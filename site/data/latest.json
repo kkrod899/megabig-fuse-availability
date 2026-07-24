@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "demo": false,
-  "generated_at": "2026-07-23T00:24:52.490Z",
+  "generated_at": "2026-07-24T00:21:30.416Z",
   "target": {
     "shop_name": "メガビッグ 布施駅前店",
     "room_name": "フラットルーム",
@@ -14,440 +14,17 @@
   "scan": {
     "status": "success",
     "scanned_days": [
-      "2026-07-23",
       "2026-07-24",
       "2026-07-25",
       "2026-07-26",
       "2026-07-27",
       "2026-07-28",
-      "2026-07-29"
+      "2026-07-29",
+      "2026-07-30"
     ],
     "error": null
   },
   "days": [
-    {
-      "date": "2026-07-23",
-      "scan_status": "success",
-      "coverage_complete": true,
-      "negative_result_confirmed": false,
-      "checked_slot_count": 27,
-      "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:11:50.802Z",
-      "slots": [
-        {
-          "start": "10:00",
-          "end": "10:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:09:48.678Z"
-        },
-        {
-          "start": "10:15",
-          "end": "10:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:09:52.508Z"
-        },
-        {
-          "start": "10:30",
-          "end": "11:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:09:56.819Z"
-        },
-        {
-          "start": "10:45",
-          "end": "11:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:01.467Z"
-        },
-        {
-          "start": "11:00",
-          "end": "11:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:04.586Z"
-        },
-        {
-          "start": "11:15",
-          "end": "11:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:08.638Z"
-        },
-        {
-          "start": "11:30",
-          "end": "12:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:13.575Z"
-        },
-        {
-          "start": "11:45",
-          "end": "12:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:17.570Z"
-        },
-        {
-          "start": "12:00",
-          "end": "12:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:23.053Z"
-        },
-        {
-          "start": "12:15",
-          "end": "12:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:26.687Z"
-        },
-        {
-          "start": "12:30",
-          "end": "13:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:29.880Z"
-        },
-        {
-          "start": "12:45",
-          "end": "13:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:35.449Z"
-        },
-        {
-          "start": "13:00",
-          "end": "13:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:40.476Z"
-        },
-        {
-          "start": "13:15",
-          "end": "13:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:46.282Z"
-        },
-        {
-          "start": "13:30",
-          "end": "14:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:50.360Z"
-        },
-        {
-          "start": "13:45",
-          "end": "14:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:54.336Z"
-        },
-        {
-          "start": "14:00",
-          "end": "14:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:10:58.884Z"
-        },
-        {
-          "start": "14:15",
-          "end": "14:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:04.591Z"
-        },
-        {
-          "start": "14:30",
-          "end": "15:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:10.080Z"
-        },
-        {
-          "start": "14:45",
-          "end": "15:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:14.745Z"
-        },
-        {
-          "start": "15:00",
-          "end": "15:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:20.457Z"
-        },
-        {
-          "start": "15:15",
-          "end": "15:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:24.195Z"
-        },
-        {
-          "start": "15:30",
-          "end": "16:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:27.842Z"
-        },
-        {
-          "start": "15:45",
-          "end": "16:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:33.874Z"
-        },
-        {
-          "start": "16:00",
-          "end": "16:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:39.648Z"
-        },
-        {
-          "start": "16:15",
-          "end": "16:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:44.402Z"
-        },
-        {
-          "start": "16:30",
-          "end": "17:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:11:47.511Z"
-        }
-      ],
-      "slot_checks": [
-        {
-          "start": "10:00",
-          "end": "10:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:09:48.678Z"
-        },
-        {
-          "start": "10:15",
-          "end": "10:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:09:52.508Z"
-        },
-        {
-          "start": "10:30",
-          "end": "11:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:09:56.819Z"
-        },
-        {
-          "start": "10:45",
-          "end": "11:15",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:01.467Z"
-        },
-        {
-          "start": "11:00",
-          "end": "11:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:04.586Z"
-        },
-        {
-          "start": "11:15",
-          "end": "11:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:08.638Z"
-        },
-        {
-          "start": "11:30",
-          "end": "12:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:13.575Z"
-        },
-        {
-          "start": "11:45",
-          "end": "12:15",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:17.570Z"
-        },
-        {
-          "start": "12:00",
-          "end": "12:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:23.053Z"
-        },
-        {
-          "start": "12:15",
-          "end": "12:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:26.687Z"
-        },
-        {
-          "start": "12:30",
-          "end": "13:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:29.880Z"
-        },
-        {
-          "start": "12:45",
-          "end": "13:15",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:35.449Z"
-        },
-        {
-          "start": "13:00",
-          "end": "13:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:40.476Z"
-        },
-        {
-          "start": "13:15",
-          "end": "13:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:46.282Z"
-        },
-        {
-          "start": "13:30",
-          "end": "14:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:50.360Z"
-        },
-        {
-          "start": "13:45",
-          "end": "14:15",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:54.336Z"
-        },
-        {
-          "start": "14:00",
-          "end": "14:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:10:58.884Z"
-        },
-        {
-          "start": "14:15",
-          "end": "14:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:04.591Z"
-        },
-        {
-          "start": "14:30",
-          "end": "15:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:10.080Z"
-        },
-        {
-          "start": "14:45",
-          "end": "15:15",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:14.745Z"
-        },
-        {
-          "start": "15:00",
-          "end": "15:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:20.457Z"
-        },
-        {
-          "start": "15:15",
-          "end": "15:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:24.195Z"
-        },
-        {
-          "start": "15:30",
-          "end": "16:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:27.842Z"
-        },
-        {
-          "start": "15:45",
-          "end": "16:15",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:33.874Z"
-        },
-        {
-          "start": "16:00",
-          "end": "16:30",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:39.648Z"
-        },
-        {
-          "start": "16:15",
-          "end": "16:45",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:44.402Z"
-        },
-        {
-          "start": "16:30",
-          "end": "17:00",
-          "state": "reservable",
-          "evidence": "exact_room_api",
-          "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:47.511Z"
-        }
-      ],
-      "candidate_start_times": [
-        "10:00",
-        "10:15",
-        "10:30",
-        "10:45",
-        "11:00",
-        "11:15",
-        "11:30",
-        "11:45",
-        "12:00",
-        "12:15",
-        "12:30",
-        "12:45",
-        "13:00",
-        "13:15",
-        "13:30",
-        "13:45",
-        "14:00",
-        "14:15",
-        "14:30",
-        "14:45",
-        "15:00",
-        "15:15",
-        "15:30",
-        "15:45",
-        "16:00",
-        "16:15",
-        "16:30"
-      ],
-      "state_counts": {
-        "reservable": 27
-      }
-    },
     {
       "date": "2026-07-24",
       "scan_status": "success",
@@ -455,169 +32,169 @@
       "negative_result_confirmed": false,
       "checked_slot_count": 27,
       "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:14:02.339Z",
+      "checked_at": "2026-07-24T00:08:59.959Z",
       "slots": [
         {
           "start": "10:00",
           "end": "10:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:11:54.602Z"
+          "checked_at": "2026-07-24T00:07:00.492Z"
         },
         {
           "start": "10:15",
           "end": "10:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:00.143Z"
+          "checked_at": "2026-07-24T00:07:06.086Z"
         },
         {
           "start": "10:30",
           "end": "11:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:03.487Z"
+          "checked_at": "2026-07-24T00:07:11.094Z"
         },
         {
           "start": "10:45",
           "end": "11:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:06.997Z"
+          "checked_at": "2026-07-24T00:07:14.337Z"
         },
         {
           "start": "11:00",
           "end": "11:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:11.221Z"
+          "checked_at": "2026-07-24T00:07:17.661Z"
         },
         {
           "start": "11:15",
           "end": "11:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:15.219Z"
+          "checked_at": "2026-07-24T00:07:21.196Z"
         },
         {
           "start": "11:30",
           "end": "12:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:19.272Z"
+          "checked_at": "2026-07-24T00:07:24.477Z"
         },
         {
           "start": "11:45",
           "end": "12:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:23.713Z"
+          "checked_at": "2026-07-24T00:07:27.987Z"
         },
         {
           "start": "12:00",
           "end": "12:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:28.339Z"
+          "checked_at": "2026-07-24T00:07:33.885Z"
         },
         {
           "start": "12:15",
           "end": "12:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:34.658Z"
+          "checked_at": "2026-07-24T00:07:38.713Z"
         },
         {
           "start": "12:30",
           "end": "13:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:39.814Z"
+          "checked_at": "2026-07-24T00:07:42.007Z"
         },
         {
           "start": "12:45",
           "end": "13:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:42.845Z"
+          "checked_at": "2026-07-24T00:07:45.436Z"
         },
         {
           "start": "13:00",
           "end": "13:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:48.386Z"
+          "checked_at": "2026-07-24T00:07:49.795Z"
         },
         {
           "start": "13:15",
           "end": "13:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:53.984Z"
+          "checked_at": "2026-07-24T00:07:54.656Z"
         },
         {
           "start": "13:30",
           "end": "14:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:12:59.817Z"
+          "checked_at": "2026-07-24T00:07:58.788Z"
         },
         {
           "start": "13:45",
           "end": "14:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:04.346Z"
+          "checked_at": "2026-07-24T00:08:03.330Z"
         },
         {
           "start": "14:00",
           "end": "14:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:08.971Z"
+          "checked_at": "2026-07-24T00:08:07.855Z"
         },
         {
           "start": "14:15",
           "end": "14:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:13.520Z"
+          "checked_at": "2026-07-24T00:08:13.959Z"
         },
         {
           "start": "14:30",
           "end": "15:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:16.993Z"
+          "checked_at": "2026-07-24T00:08:18.338Z"
         },
         {
           "start": "14:45",
           "end": "15:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:22.310Z"
+          "checked_at": "2026-07-24T00:08:22.153Z"
         },
         {
           "start": "15:00",
           "end": "15:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:25.558Z"
+          "checked_at": "2026-07-24T00:08:25.636Z"
         },
         {
           "start": "15:15",
           "end": "15:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:30.534Z"
+          "checked_at": "2026-07-24T00:08:31.367Z"
         },
         {
           "start": "15:30",
           "end": "16:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:36.564Z"
+          "checked_at": "2026-07-24T00:08:34.882Z"
         },
         {
           "start": "15:45",
           "end": "16:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:42.444Z"
+          "checked_at": "2026-07-24T00:08:39.840Z"
         },
         {
           "start": "16:00",
           "end": "16:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:47.174Z"
+          "checked_at": "2026-07-24T00:08:44.561Z"
         },
         {
           "start": "16:15",
           "end": "16:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:51.313Z"
+          "checked_at": "2026-07-24T00:08:50.421Z"
         },
         {
           "start": "16:30",
           "end": "17:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:13:57.338Z"
+          "checked_at": "2026-07-24T00:08:54.743Z"
         }
       ],
       "slot_checks": [
@@ -627,7 +204,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:11:54.602Z"
+          "checked_at": "2026-07-24T00:07:00.492Z"
         },
         {
           "start": "10:15",
@@ -635,7 +212,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:00.143Z"
+          "checked_at": "2026-07-24T00:07:06.086Z"
         },
         {
           "start": "10:30",
@@ -643,7 +220,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:03.487Z"
+          "checked_at": "2026-07-24T00:07:11.094Z"
         },
         {
           "start": "10:45",
@@ -651,7 +228,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:06.997Z"
+          "checked_at": "2026-07-24T00:07:14.337Z"
         },
         {
           "start": "11:00",
@@ -659,7 +236,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:11.221Z"
+          "checked_at": "2026-07-24T00:07:17.661Z"
         },
         {
           "start": "11:15",
@@ -667,7 +244,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:15.219Z"
+          "checked_at": "2026-07-24T00:07:21.196Z"
         },
         {
           "start": "11:30",
@@ -675,7 +252,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:19.272Z"
+          "checked_at": "2026-07-24T00:07:24.477Z"
         },
         {
           "start": "11:45",
@@ -683,7 +260,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:23.713Z"
+          "checked_at": "2026-07-24T00:07:27.987Z"
         },
         {
           "start": "12:00",
@@ -691,7 +268,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:28.339Z"
+          "checked_at": "2026-07-24T00:07:33.885Z"
         },
         {
           "start": "12:15",
@@ -699,7 +276,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:34.658Z"
+          "checked_at": "2026-07-24T00:07:38.713Z"
         },
         {
           "start": "12:30",
@@ -707,7 +284,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:39.814Z"
+          "checked_at": "2026-07-24T00:07:42.007Z"
         },
         {
           "start": "12:45",
@@ -715,7 +292,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:42.845Z"
+          "checked_at": "2026-07-24T00:07:45.436Z"
         },
         {
           "start": "13:00",
@@ -723,7 +300,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:48.386Z"
+          "checked_at": "2026-07-24T00:07:49.795Z"
         },
         {
           "start": "13:15",
@@ -731,7 +308,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:53.984Z"
+          "checked_at": "2026-07-24T00:07:54.656Z"
         },
         {
           "start": "13:30",
@@ -739,7 +316,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:12:59.817Z"
+          "checked_at": "2026-07-24T00:07:58.788Z"
         },
         {
           "start": "13:45",
@@ -747,7 +324,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:04.346Z"
+          "checked_at": "2026-07-24T00:08:03.330Z"
         },
         {
           "start": "14:00",
@@ -755,7 +332,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:08.971Z"
+          "checked_at": "2026-07-24T00:08:07.855Z"
         },
         {
           "start": "14:15",
@@ -763,7 +340,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:13.520Z"
+          "checked_at": "2026-07-24T00:08:13.959Z"
         },
         {
           "start": "14:30",
@@ -771,7 +348,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:16.993Z"
+          "checked_at": "2026-07-24T00:08:18.338Z"
         },
         {
           "start": "14:45",
@@ -779,7 +356,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:22.310Z"
+          "checked_at": "2026-07-24T00:08:22.153Z"
         },
         {
           "start": "15:00",
@@ -787,7 +364,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:25.558Z"
+          "checked_at": "2026-07-24T00:08:25.636Z"
         },
         {
           "start": "15:15",
@@ -795,7 +372,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:30.534Z"
+          "checked_at": "2026-07-24T00:08:31.367Z"
         },
         {
           "start": "15:30",
@@ -803,7 +380,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:36.564Z"
+          "checked_at": "2026-07-24T00:08:34.882Z"
         },
         {
           "start": "15:45",
@@ -811,7 +388,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:42.444Z"
+          "checked_at": "2026-07-24T00:08:39.840Z"
         },
         {
           "start": "16:00",
@@ -819,7 +396,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:47.174Z"
+          "checked_at": "2026-07-24T00:08:44.561Z"
         },
         {
           "start": "16:15",
@@ -827,7 +404,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:51.313Z"
+          "checked_at": "2026-07-24T00:08:50.421Z"
         },
         {
           "start": "16:30",
@@ -835,7 +412,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:13:57.338Z"
+          "checked_at": "2026-07-24T00:08:54.743Z"
         }
       ],
       "candidate_start_times": [
@@ -878,169 +455,43 @@
       "negative_result_confirmed": false,
       "checked_slot_count": 27,
       "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:16:07.951Z",
+      "checked_at": "2026-07-24T00:11:03.816Z",
       "slots": [
         {
           "start": "10:00",
           "end": "10:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:14:06.199Z"
+          "checked_at": "2026-07-24T00:09:03.616Z"
         },
         {
           "start": "10:15",
           "end": "10:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:14:09.751Z"
+          "checked_at": "2026-07-24T00:09:08.610Z"
         },
         {
           "start": "10:30",
           "end": "11:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:14:12.912Z"
+          "checked_at": "2026-07-24T00:09:11.709Z"
         },
         {
           "start": "10:45",
           "end": "11:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:14:16.194Z"
+          "checked_at": "2026-07-24T00:09:16.963Z"
         },
         {
           "start": "11:00",
           "end": "11:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:14:20.670Z"
+          "checked_at": "2026-07-24T00:09:22.514Z"
         },
         {
           "start": "11:15",
           "end": "11:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:14:26.597Z"
-        },
-        {
-          "start": "11:30",
-          "end": "12:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:30.871Z"
-        },
-        {
-          "start": "11:45",
-          "end": "12:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:34.559Z"
-        },
-        {
-          "start": "12:00",
-          "end": "12:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:38.991Z"
-        },
-        {
-          "start": "12:15",
-          "end": "12:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:43.330Z"
-        },
-        {
-          "start": "12:30",
-          "end": "13:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:48.492Z"
-        },
-        {
-          "start": "12:45",
-          "end": "13:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:53.010Z"
-        },
-        {
-          "start": "13:00",
-          "end": "13:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:14:57.345Z"
-        },
-        {
-          "start": "13:15",
-          "end": "13:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:03.389Z"
-        },
-        {
-          "start": "13:30",
-          "end": "14:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:07.830Z"
-        },
-        {
-          "start": "13:45",
-          "end": "14:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:13.102Z"
-        },
-        {
-          "start": "14:00",
-          "end": "14:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:16.771Z"
-        },
-        {
-          "start": "14:15",
-          "end": "14:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:21.197Z"
-        },
-        {
-          "start": "14:30",
-          "end": "15:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:24.518Z"
-        },
-        {
-          "start": "14:45",
-          "end": "15:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:29.938Z"
-        },
-        {
-          "start": "15:00",
-          "end": "15:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:34.384Z"
-        },
-        {
-          "start": "15:15",
-          "end": "15:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:39.596Z"
-        },
-        {
-          "start": "15:30",
-          "end": "16:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:43.677Z"
-        },
-        {
-          "start": "15:45",
-          "end": "16:15",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:47.888Z"
-        },
-        {
-          "start": "16:00",
-          "end": "16:30",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:52.887Z"
-        },
-        {
-          "start": "16:15",
-          "end": "16:45",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:15:58.957Z"
-        },
-        {
-          "start": "16:30",
-          "end": "17:00",
-          "state": "reservable",
-          "checked_at": "2026-07-23T00:16:03.451Z"
+          "checked_at": "2026-07-24T00:09:27.006Z"
         }
       ],
       "slot_checks": [
@@ -1050,7 +501,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:06.199Z"
+          "checked_at": "2026-07-24T00:09:03.616Z"
         },
         {
           "start": "10:15",
@@ -1058,7 +509,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:09.751Z"
+          "checked_at": "2026-07-24T00:09:08.610Z"
         },
         {
           "start": "10:30",
@@ -1066,7 +517,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:12.912Z"
+          "checked_at": "2026-07-24T00:09:11.709Z"
         },
         {
           "start": "10:45",
@@ -1074,7 +525,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:16.194Z"
+          "checked_at": "2026-07-24T00:09:16.963Z"
         },
         {
           "start": "11:00",
@@ -1082,7 +533,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:20.670Z"
+          "checked_at": "2026-07-24T00:09:22.514Z"
         },
         {
           "start": "11:15",
@@ -1090,175 +541,175 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:26.597Z"
+          "checked_at": "2026-07-24T00:09:27.006Z"
         },
         {
           "start": "11:30",
           "end": "12:00",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:30.871Z"
+          "checked_at": "2026-07-24T00:09:31.724Z"
         },
         {
           "start": "11:45",
           "end": "12:15",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:34.559Z"
+          "checked_at": "2026-07-24T00:09:35.227Z"
         },
         {
           "start": "12:00",
           "end": "12:30",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:38.991Z"
+          "checked_at": "2026-07-24T00:09:38.648Z"
         },
         {
           "start": "12:15",
           "end": "12:45",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:43.330Z"
+          "checked_at": "2026-07-24T00:09:43.438Z"
         },
         {
           "start": "12:30",
           "end": "13:00",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:48.492Z"
+          "checked_at": "2026-07-24T00:09:47.236Z"
         },
         {
           "start": "12:45",
           "end": "13:15",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:53.010Z"
+          "checked_at": "2026-07-24T00:09:50.524Z"
         },
         {
           "start": "13:00",
           "end": "13:30",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:14:57.345Z"
+          "checked_at": "2026-07-24T00:09:54.240Z"
         },
         {
           "start": "13:15",
           "end": "13:45",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:03.389Z"
+          "checked_at": "2026-07-24T00:09:58.370Z"
         },
         {
           "start": "13:30",
           "end": "14:00",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:07.830Z"
+          "checked_at": "2026-07-24T00:10:03.196Z"
         },
         {
           "start": "13:45",
           "end": "14:15",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:13.102Z"
+          "checked_at": "2026-07-24T00:10:08.515Z"
         },
         {
           "start": "14:00",
           "end": "14:30",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:16.771Z"
+          "checked_at": "2026-07-24T00:10:14.412Z"
         },
         {
           "start": "14:15",
           "end": "14:45",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:21.197Z"
+          "checked_at": "2026-07-24T00:10:19.640Z"
         },
         {
           "start": "14:30",
           "end": "15:00",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:24.518Z"
+          "checked_at": "2026-07-24T00:10:24.992Z"
         },
         {
           "start": "14:45",
           "end": "15:15",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:29.938Z"
+          "checked_at": "2026-07-24T00:10:28.987Z"
         },
         {
           "start": "15:00",
           "end": "15:30",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:34.384Z"
+          "checked_at": "2026-07-24T00:10:33.362Z"
         },
         {
           "start": "15:15",
           "end": "15:45",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:39.596Z"
+          "checked_at": "2026-07-24T00:10:38.830Z"
         },
         {
           "start": "15:30",
           "end": "16:00",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:43.677Z"
+          "checked_at": "2026-07-24T00:10:42.997Z"
         },
         {
           "start": "15:45",
           "end": "16:15",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:47.888Z"
+          "checked_at": "2026-07-24T00:10:48.530Z"
         },
         {
           "start": "16:00",
           "end": "16:30",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:52.887Z"
+          "checked_at": "2026-07-24T00:10:52.414Z"
         },
         {
           "start": "16:15",
           "end": "16:45",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:15:58.957Z"
+          "checked_at": "2026-07-24T00:10:56.864Z"
         },
         {
           "start": "16:30",
           "end": "17:00",
-          "state": "reservable",
+          "state": "not_reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:03.451Z"
+          "checked_at": "2026-07-24T00:11:00.693Z"
         }
       ],
       "candidate_start_times": [
@@ -1291,7 +742,8 @@
         "16:30"
       ],
       "state_counts": {
-        "reservable": 27
+        "reservable": 6,
+        "not_reservable": 21
       }
     },
     {
@@ -1301,169 +753,169 @@
       "negative_result_confirmed": false,
       "checked_slot_count": 27,
       "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:18:17.194Z",
+      "checked_at": "2026-07-24T00:13:14.864Z",
       "slots": [
         {
           "start": "10:00",
           "end": "10:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:11.683Z"
+          "checked_at": "2026-07-24T00:11:07.373Z"
         },
         {
           "start": "10:15",
           "end": "10:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:15.934Z"
+          "checked_at": "2026-07-24T00:11:12.342Z"
         },
         {
           "start": "10:30",
           "end": "11:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:20.196Z"
+          "checked_at": "2026-07-24T00:11:17.709Z"
         },
         {
           "start": "10:45",
           "end": "11:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:25.651Z"
+          "checked_at": "2026-07-24T00:11:20.844Z"
         },
         {
           "start": "11:00",
           "end": "11:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:30.657Z"
+          "checked_at": "2026-07-24T00:11:26.717Z"
         },
         {
           "start": "11:15",
           "end": "11:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:36.293Z"
+          "checked_at": "2026-07-24T00:11:31.797Z"
         },
         {
           "start": "11:30",
           "end": "12:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:40.293Z"
+          "checked_at": "2026-07-24T00:11:36.349Z"
         },
         {
           "start": "11:45",
           "end": "12:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:45.362Z"
+          "checked_at": "2026-07-24T00:11:42.003Z"
         },
         {
           "start": "12:00",
           "end": "12:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:48.766Z"
+          "checked_at": "2026-07-24T00:11:47.802Z"
         },
         {
           "start": "12:15",
           "end": "12:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:54.959Z"
+          "checked_at": "2026-07-24T00:11:51.932Z"
         },
         {
           "start": "12:30",
           "end": "13:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:16:58.308Z"
+          "checked_at": "2026-07-24T00:11:55.421Z"
         },
         {
           "start": "12:45",
           "end": "13:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:03.371Z"
+          "checked_at": "2026-07-24T00:12:00.538Z"
         },
         {
           "start": "13:00",
           "end": "13:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:07.020Z"
+          "checked_at": "2026-07-24T00:12:05.826Z"
         },
         {
           "start": "13:15",
           "end": "13:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:12.192Z"
+          "checked_at": "2026-07-24T00:12:10.918Z"
         },
         {
           "start": "13:30",
           "end": "14:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:17.453Z"
+          "checked_at": "2026-07-24T00:12:16.269Z"
         },
         {
           "start": "13:45",
           "end": "14:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:20.760Z"
+          "checked_at": "2026-07-24T00:12:21.795Z"
         },
         {
           "start": "14:00",
           "end": "14:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:26.053Z"
+          "checked_at": "2026-07-24T00:12:25.450Z"
         },
         {
           "start": "14:15",
           "end": "14:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:29.505Z"
+          "checked_at": "2026-07-24T00:12:30.345Z"
         },
         {
           "start": "14:30",
           "end": "15:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:35.340Z"
+          "checked_at": "2026-07-24T00:12:34.432Z"
         },
         {
           "start": "14:45",
           "end": "15:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:39.567Z"
+          "checked_at": "2026-07-24T00:12:38.897Z"
         },
         {
           "start": "15:00",
           "end": "15:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:44.920Z"
+          "checked_at": "2026-07-24T00:12:42.630Z"
         },
         {
           "start": "15:15",
           "end": "15:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:48.846Z"
+          "checked_at": "2026-07-24T00:12:48.380Z"
         },
         {
           "start": "15:30",
           "end": "16:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:17:54.769Z"
+          "checked_at": "2026-07-24T00:12:52.020Z"
         },
         {
           "start": "15:45",
           "end": "16:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:00.229Z"
+          "checked_at": "2026-07-24T00:12:56.310Z"
         },
         {
           "start": "16:00",
           "end": "16:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:04.933Z"
+          "checked_at": "2026-07-24T00:13:01.015Z"
         },
         {
           "start": "16:15",
           "end": "16:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:08.927Z"
+          "checked_at": "2026-07-24T00:13:04.904Z"
         },
         {
           "start": "16:30",
           "end": "17:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:12.035Z"
+          "checked_at": "2026-07-24T00:13:09.474Z"
         }
       ],
       "slot_checks": [
@@ -1473,7 +925,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:11.683Z"
+          "checked_at": "2026-07-24T00:11:07.373Z"
         },
         {
           "start": "10:15",
@@ -1481,7 +933,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:15.934Z"
+          "checked_at": "2026-07-24T00:11:12.342Z"
         },
         {
           "start": "10:30",
@@ -1489,7 +941,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:20.196Z"
+          "checked_at": "2026-07-24T00:11:17.709Z"
         },
         {
           "start": "10:45",
@@ -1497,7 +949,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:25.651Z"
+          "checked_at": "2026-07-24T00:11:20.844Z"
         },
         {
           "start": "11:00",
@@ -1505,7 +957,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:30.657Z"
+          "checked_at": "2026-07-24T00:11:26.717Z"
         },
         {
           "start": "11:15",
@@ -1513,7 +965,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:36.293Z"
+          "checked_at": "2026-07-24T00:11:31.797Z"
         },
         {
           "start": "11:30",
@@ -1521,7 +973,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:40.293Z"
+          "checked_at": "2026-07-24T00:11:36.349Z"
         },
         {
           "start": "11:45",
@@ -1529,7 +981,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:45.362Z"
+          "checked_at": "2026-07-24T00:11:42.003Z"
         },
         {
           "start": "12:00",
@@ -1537,7 +989,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:48.766Z"
+          "checked_at": "2026-07-24T00:11:47.802Z"
         },
         {
           "start": "12:15",
@@ -1545,7 +997,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:54.959Z"
+          "checked_at": "2026-07-24T00:11:51.932Z"
         },
         {
           "start": "12:30",
@@ -1553,7 +1005,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:16:58.308Z"
+          "checked_at": "2026-07-24T00:11:55.421Z"
         },
         {
           "start": "12:45",
@@ -1561,7 +1013,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:03.371Z"
+          "checked_at": "2026-07-24T00:12:00.538Z"
         },
         {
           "start": "13:00",
@@ -1569,7 +1021,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:07.020Z"
+          "checked_at": "2026-07-24T00:12:05.826Z"
         },
         {
           "start": "13:15",
@@ -1577,7 +1029,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:12.192Z"
+          "checked_at": "2026-07-24T00:12:10.918Z"
         },
         {
           "start": "13:30",
@@ -1585,7 +1037,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:17.453Z"
+          "checked_at": "2026-07-24T00:12:16.269Z"
         },
         {
           "start": "13:45",
@@ -1593,7 +1045,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:20.760Z"
+          "checked_at": "2026-07-24T00:12:21.795Z"
         },
         {
           "start": "14:00",
@@ -1601,7 +1053,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:26.053Z"
+          "checked_at": "2026-07-24T00:12:25.450Z"
         },
         {
           "start": "14:15",
@@ -1609,7 +1061,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:29.505Z"
+          "checked_at": "2026-07-24T00:12:30.345Z"
         },
         {
           "start": "14:30",
@@ -1617,7 +1069,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:35.340Z"
+          "checked_at": "2026-07-24T00:12:34.432Z"
         },
         {
           "start": "14:45",
@@ -1625,7 +1077,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:39.567Z"
+          "checked_at": "2026-07-24T00:12:38.897Z"
         },
         {
           "start": "15:00",
@@ -1633,7 +1085,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:44.920Z"
+          "checked_at": "2026-07-24T00:12:42.630Z"
         },
         {
           "start": "15:15",
@@ -1641,7 +1093,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:48.846Z"
+          "checked_at": "2026-07-24T00:12:48.380Z"
         },
         {
           "start": "15:30",
@@ -1649,7 +1101,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:17:54.769Z"
+          "checked_at": "2026-07-24T00:12:52.020Z"
         },
         {
           "start": "15:45",
@@ -1657,7 +1109,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:00.229Z"
+          "checked_at": "2026-07-24T00:12:56.310Z"
         },
         {
           "start": "16:00",
@@ -1665,7 +1117,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:04.933Z"
+          "checked_at": "2026-07-24T00:13:01.015Z"
         },
         {
           "start": "16:15",
@@ -1673,7 +1125,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:08.927Z"
+          "checked_at": "2026-07-24T00:13:04.904Z"
         },
         {
           "start": "16:30",
@@ -1681,7 +1133,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:12.035Z"
+          "checked_at": "2026-07-24T00:13:09.474Z"
         }
       ],
       "candidate_start_times": [
@@ -1724,169 +1176,169 @@
       "negative_result_confirmed": false,
       "checked_slot_count": 27,
       "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:20:29.464Z",
+      "checked_at": "2026-07-24T00:15:13.978Z",
       "slots": [
         {
           "start": "10:00",
           "end": "10:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:20.878Z"
+          "checked_at": "2026-07-24T00:13:18.513Z"
         },
         {
           "start": "10:15",
           "end": "10:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:25.158Z"
+          "checked_at": "2026-07-24T00:13:22.256Z"
         },
         {
           "start": "10:30",
           "end": "11:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:29.878Z"
+          "checked_at": "2026-07-24T00:13:25.301Z"
         },
         {
           "start": "10:45",
           "end": "11:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:33.003Z"
+          "checked_at": "2026-07-24T00:13:29.833Z"
         },
         {
           "start": "11:00",
           "end": "11:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:37.598Z"
+          "checked_at": "2026-07-24T00:13:33.356Z"
         },
         {
           "start": "11:15",
           "end": "11:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:41.818Z"
+          "checked_at": "2026-07-24T00:13:36.790Z"
         },
         {
           "start": "11:30",
           "end": "12:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:47.651Z"
+          "checked_at": "2026-07-24T00:13:41.280Z"
         },
         {
           "start": "11:45",
           "end": "12:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:53.686Z"
+          "checked_at": "2026-07-24T00:13:45.708Z"
         },
         {
           "start": "12:00",
           "end": "12:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:18:58.115Z"
+          "checked_at": "2026-07-24T00:13:49.343Z"
         },
         {
           "start": "12:15",
           "end": "12:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:03.234Z"
+          "checked_at": "2026-07-24T00:13:54.461Z"
         },
         {
           "start": "12:30",
           "end": "13:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:08.553Z"
+          "checked_at": "2026-07-24T00:13:59.272Z"
         },
         {
           "start": "12:45",
           "end": "13:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:14.310Z"
+          "checked_at": "2026-07-24T00:14:02.651Z"
         },
         {
           "start": "13:00",
           "end": "13:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:18.967Z"
+          "checked_at": "2026-07-24T00:14:05.780Z"
         },
         {
           "start": "13:15",
           "end": "13:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:25.070Z"
+          "checked_at": "2026-07-24T00:14:11.084Z"
         },
         {
           "start": "13:30",
           "end": "14:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:29.259Z"
+          "checked_at": "2026-07-24T00:14:16.797Z"
         },
         {
           "start": "13:45",
           "end": "14:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:32.971Z"
+          "checked_at": "2026-07-24T00:14:20.519Z"
         },
         {
           "start": "14:00",
           "end": "14:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:37.505Z"
+          "checked_at": "2026-07-24T00:14:26.254Z"
         },
         {
           "start": "14:15",
           "end": "14:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:43.170Z"
+          "checked_at": "2026-07-24T00:14:29.943Z"
         },
         {
           "start": "14:30",
           "end": "15:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:49.056Z"
+          "checked_at": "2026-07-24T00:14:33.436Z"
         },
         {
           "start": "14:45",
           "end": "15:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:52.891Z"
+          "checked_at": "2026-07-24T00:14:38.670Z"
         },
         {
           "start": "15:00",
           "end": "15:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:19:58.838Z"
+          "checked_at": "2026-07-24T00:14:44.449Z"
         },
         {
           "start": "15:15",
           "end": "15:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:04.915Z"
+          "checked_at": "2026-07-24T00:14:50.179Z"
         },
         {
           "start": "15:30",
           "end": "16:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:09.128Z"
+          "checked_at": "2026-07-24T00:14:55.474Z"
         },
         {
           "start": "15:45",
           "end": "16:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:12.746Z"
+          "checked_at": "2026-07-24T00:14:58.923Z"
         },
         {
           "start": "16:00",
           "end": "16:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:16.310Z"
+          "checked_at": "2026-07-24T00:15:01.943Z"
         },
         {
           "start": "16:15",
           "end": "16:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:20.103Z"
+          "checked_at": "2026-07-24T00:15:06.497Z"
         },
         {
           "start": "16:30",
           "end": "17:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:24.289Z"
+          "checked_at": "2026-07-24T00:15:10.400Z"
         }
       ],
       "slot_checks": [
@@ -1896,7 +1348,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:20.878Z"
+          "checked_at": "2026-07-24T00:13:18.513Z"
         },
         {
           "start": "10:15",
@@ -1904,7 +1356,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:25.158Z"
+          "checked_at": "2026-07-24T00:13:22.256Z"
         },
         {
           "start": "10:30",
@@ -1912,7 +1364,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:29.878Z"
+          "checked_at": "2026-07-24T00:13:25.301Z"
         },
         {
           "start": "10:45",
@@ -1920,7 +1372,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:33.003Z"
+          "checked_at": "2026-07-24T00:13:29.833Z"
         },
         {
           "start": "11:00",
@@ -1928,7 +1380,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:37.598Z"
+          "checked_at": "2026-07-24T00:13:33.356Z"
         },
         {
           "start": "11:15",
@@ -1936,7 +1388,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:41.818Z"
+          "checked_at": "2026-07-24T00:13:36.790Z"
         },
         {
           "start": "11:30",
@@ -1944,7 +1396,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:47.651Z"
+          "checked_at": "2026-07-24T00:13:41.280Z"
         },
         {
           "start": "11:45",
@@ -1952,7 +1404,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:53.686Z"
+          "checked_at": "2026-07-24T00:13:45.708Z"
         },
         {
           "start": "12:00",
@@ -1960,7 +1412,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:18:58.115Z"
+          "checked_at": "2026-07-24T00:13:49.343Z"
         },
         {
           "start": "12:15",
@@ -1968,7 +1420,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:03.234Z"
+          "checked_at": "2026-07-24T00:13:54.461Z"
         },
         {
           "start": "12:30",
@@ -1976,7 +1428,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:08.553Z"
+          "checked_at": "2026-07-24T00:13:59.272Z"
         },
         {
           "start": "12:45",
@@ -1984,7 +1436,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:14.310Z"
+          "checked_at": "2026-07-24T00:14:02.651Z"
         },
         {
           "start": "13:00",
@@ -1992,7 +1444,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:18.967Z"
+          "checked_at": "2026-07-24T00:14:05.780Z"
         },
         {
           "start": "13:15",
@@ -2000,7 +1452,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:25.070Z"
+          "checked_at": "2026-07-24T00:14:11.084Z"
         },
         {
           "start": "13:30",
@@ -2008,7 +1460,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:29.259Z"
+          "checked_at": "2026-07-24T00:14:16.797Z"
         },
         {
           "start": "13:45",
@@ -2016,7 +1468,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:32.971Z"
+          "checked_at": "2026-07-24T00:14:20.519Z"
         },
         {
           "start": "14:00",
@@ -2024,7 +1476,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:37.505Z"
+          "checked_at": "2026-07-24T00:14:26.254Z"
         },
         {
           "start": "14:15",
@@ -2032,7 +1484,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:43.170Z"
+          "checked_at": "2026-07-24T00:14:29.943Z"
         },
         {
           "start": "14:30",
@@ -2040,7 +1492,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:49.056Z"
+          "checked_at": "2026-07-24T00:14:33.436Z"
         },
         {
           "start": "14:45",
@@ -2048,7 +1500,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:52.891Z"
+          "checked_at": "2026-07-24T00:14:38.670Z"
         },
         {
           "start": "15:00",
@@ -2056,7 +1508,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:19:58.838Z"
+          "checked_at": "2026-07-24T00:14:44.449Z"
         },
         {
           "start": "15:15",
@@ -2064,7 +1516,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:04.915Z"
+          "checked_at": "2026-07-24T00:14:50.179Z"
         },
         {
           "start": "15:30",
@@ -2072,7 +1524,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:09.128Z"
+          "checked_at": "2026-07-24T00:14:55.474Z"
         },
         {
           "start": "15:45",
@@ -2080,7 +1532,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:12.746Z"
+          "checked_at": "2026-07-24T00:14:58.923Z"
         },
         {
           "start": "16:00",
@@ -2088,7 +1540,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:16.310Z"
+          "checked_at": "2026-07-24T00:15:01.943Z"
         },
         {
           "start": "16:15",
@@ -2096,7 +1548,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:20.103Z"
+          "checked_at": "2026-07-24T00:15:06.497Z"
         },
         {
           "start": "16:30",
@@ -2104,7 +1556,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:24.289Z"
+          "checked_at": "2026-07-24T00:15:10.400Z"
         }
       ],
       "candidate_start_times": [
@@ -2147,169 +1599,169 @@
       "negative_result_confirmed": false,
       "checked_slot_count": 27,
       "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:22:46.892Z",
+      "checked_at": "2026-07-24T00:17:16.899Z",
       "slots": [
         {
           "start": "10:00",
           "end": "10:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:33.202Z"
+          "checked_at": "2026-07-24T00:15:17.603Z"
         },
         {
           "start": "10:15",
           "end": "10:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:36.884Z"
+          "checked_at": "2026-07-24T00:15:22.741Z"
         },
         {
           "start": "10:30",
           "end": "11:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:42.850Z"
+          "checked_at": "2026-07-24T00:15:26.608Z"
         },
         {
           "start": "10:45",
           "end": "11:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:46.833Z"
+          "checked_at": "2026-07-24T00:15:32.378Z"
         },
         {
           "start": "11:00",
           "end": "11:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:50.705Z"
+          "checked_at": "2026-07-24T00:15:35.684Z"
         },
         {
           "start": "11:15",
           "end": "11:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:20:55.303Z"
+          "checked_at": "2026-07-24T00:15:40.017Z"
         },
         {
           "start": "11:30",
           "end": "12:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:00.218Z"
+          "checked_at": "2026-07-24T00:15:44.004Z"
         },
         {
           "start": "11:45",
           "end": "12:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:03.972Z"
+          "checked_at": "2026-07-24T00:15:48.037Z"
         },
         {
           "start": "12:00",
           "end": "12:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:07.946Z"
+          "checked_at": "2026-07-24T00:15:51.947Z"
         },
         {
           "start": "12:15",
           "end": "12:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:12.125Z"
+          "checked_at": "2026-07-24T00:15:55.564Z"
         },
         {
           "start": "12:30",
           "end": "13:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:17.755Z"
+          "checked_at": "2026-07-24T00:15:59.716Z"
         },
         {
           "start": "12:45",
           "end": "13:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:23.283Z"
+          "checked_at": "2026-07-24T00:16:04.697Z"
         },
         {
           "start": "13:00",
           "end": "13:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:29.114Z"
+          "checked_at": "2026-07-24T00:16:10.147Z"
         },
         {
           "start": "13:15",
           "end": "13:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:34.700Z"
+          "checked_at": "2026-07-24T00:16:16.377Z"
         },
         {
           "start": "13:30",
           "end": "14:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:40.425Z"
+          "checked_at": "2026-07-24T00:16:22.049Z"
         },
         {
           "start": "13:45",
           "end": "14:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:45.488Z"
+          "checked_at": "2026-07-24T00:16:26.067Z"
         },
         {
           "start": "14:00",
           "end": "14:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:50.424Z"
+          "checked_at": "2026-07-24T00:16:30.216Z"
         },
         {
           "start": "14:15",
           "end": "14:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:21:56.001Z"
+          "checked_at": "2026-07-24T00:16:35.195Z"
         },
         {
           "start": "14:30",
           "end": "15:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:01.818Z"
+          "checked_at": "2026-07-24T00:16:39.096Z"
         },
         {
           "start": "14:45",
           "end": "15:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:06.341Z"
+          "checked_at": "2026-07-24T00:16:42.145Z"
         },
         {
           "start": "15:00",
           "end": "15:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:10.239Z"
+          "checked_at": "2026-07-24T00:16:46.516Z"
         },
         {
           "start": "15:15",
           "end": "15:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:15.560Z"
+          "checked_at": "2026-07-24T00:16:50.490Z"
         },
         {
           "start": "15:30",
           "end": "16:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:20.146Z"
+          "checked_at": "2026-07-24T00:16:56.037Z"
         },
         {
           "start": "15:45",
           "end": "16:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:24.156Z"
+          "checked_at": "2026-07-24T00:17:00.060Z"
         },
         {
           "start": "16:00",
           "end": "16:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:29.737Z"
+          "checked_at": "2026-07-24T00:17:04.300Z"
         },
         {
           "start": "16:15",
           "end": "16:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:35.961Z"
+          "checked_at": "2026-07-24T00:17:08.407Z"
         },
         {
           "start": "16:30",
           "end": "17:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:41.465Z"
+          "checked_at": "2026-07-24T00:17:11.484Z"
         }
       ],
       "slot_checks": [
@@ -2319,7 +1771,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:33.202Z"
+          "checked_at": "2026-07-24T00:15:17.603Z"
         },
         {
           "start": "10:15",
@@ -2327,7 +1779,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:36.884Z"
+          "checked_at": "2026-07-24T00:15:22.741Z"
         },
         {
           "start": "10:30",
@@ -2335,7 +1787,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:42.850Z"
+          "checked_at": "2026-07-24T00:15:26.608Z"
         },
         {
           "start": "10:45",
@@ -2343,7 +1795,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:46.833Z"
+          "checked_at": "2026-07-24T00:15:32.378Z"
         },
         {
           "start": "11:00",
@@ -2351,7 +1803,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:50.705Z"
+          "checked_at": "2026-07-24T00:15:35.684Z"
         },
         {
           "start": "11:15",
@@ -2359,7 +1811,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:20:55.303Z"
+          "checked_at": "2026-07-24T00:15:40.017Z"
         },
         {
           "start": "11:30",
@@ -2367,7 +1819,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:00.218Z"
+          "checked_at": "2026-07-24T00:15:44.004Z"
         },
         {
           "start": "11:45",
@@ -2375,7 +1827,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:03.972Z"
+          "checked_at": "2026-07-24T00:15:48.037Z"
         },
         {
           "start": "12:00",
@@ -2383,7 +1835,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:07.946Z"
+          "checked_at": "2026-07-24T00:15:51.947Z"
         },
         {
           "start": "12:15",
@@ -2391,7 +1843,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:12.125Z"
+          "checked_at": "2026-07-24T00:15:55.564Z"
         },
         {
           "start": "12:30",
@@ -2399,7 +1851,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:17.755Z"
+          "checked_at": "2026-07-24T00:15:59.716Z"
         },
         {
           "start": "12:45",
@@ -2407,7 +1859,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:23.283Z"
+          "checked_at": "2026-07-24T00:16:04.697Z"
         },
         {
           "start": "13:00",
@@ -2415,7 +1867,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:29.114Z"
+          "checked_at": "2026-07-24T00:16:10.147Z"
         },
         {
           "start": "13:15",
@@ -2423,7 +1875,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:34.700Z"
+          "checked_at": "2026-07-24T00:16:16.377Z"
         },
         {
           "start": "13:30",
@@ -2431,7 +1883,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:40.425Z"
+          "checked_at": "2026-07-24T00:16:22.049Z"
         },
         {
           "start": "13:45",
@@ -2439,7 +1891,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:45.488Z"
+          "checked_at": "2026-07-24T00:16:26.067Z"
         },
         {
           "start": "14:00",
@@ -2447,7 +1899,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:50.424Z"
+          "checked_at": "2026-07-24T00:16:30.216Z"
         },
         {
           "start": "14:15",
@@ -2455,7 +1907,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:21:56.001Z"
+          "checked_at": "2026-07-24T00:16:35.195Z"
         },
         {
           "start": "14:30",
@@ -2463,7 +1915,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:01.818Z"
+          "checked_at": "2026-07-24T00:16:39.096Z"
         },
         {
           "start": "14:45",
@@ -2471,7 +1923,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:06.341Z"
+          "checked_at": "2026-07-24T00:16:42.145Z"
         },
         {
           "start": "15:00",
@@ -2479,7 +1931,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:10.239Z"
+          "checked_at": "2026-07-24T00:16:46.516Z"
         },
         {
           "start": "15:15",
@@ -2487,7 +1939,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:15.560Z"
+          "checked_at": "2026-07-24T00:16:50.490Z"
         },
         {
           "start": "15:30",
@@ -2495,7 +1947,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:20.146Z"
+          "checked_at": "2026-07-24T00:16:56.037Z"
         },
         {
           "start": "15:45",
@@ -2503,7 +1955,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:24.156Z"
+          "checked_at": "2026-07-24T00:17:00.060Z"
         },
         {
           "start": "16:00",
@@ -2511,7 +1963,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:29.737Z"
+          "checked_at": "2026-07-24T00:17:04.300Z"
         },
         {
           "start": "16:15",
@@ -2519,7 +1971,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:35.961Z"
+          "checked_at": "2026-07-24T00:17:08.407Z"
         },
         {
           "start": "16:30",
@@ -2527,7 +1979,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:41.465Z"
+          "checked_at": "2026-07-24T00:17:11.484Z"
         }
       ],
       "candidate_start_times": [
@@ -2570,169 +2022,169 @@
       "negative_result_confirmed": false,
       "checked_slot_count": 27,
       "total_slot_count": 27,
-      "checked_at": "2026-07-23T00:24:52.449Z",
+      "checked_at": "2026-07-24T00:19:23.008Z",
       "slots": [
         {
           "start": "10:00",
           "end": "10:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:50.537Z"
+          "checked_at": "2026-07-24T00:17:20.423Z"
         },
         {
           "start": "10:15",
           "end": "10:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:54.193Z"
+          "checked_at": "2026-07-24T00:17:24.338Z"
         },
         {
           "start": "10:30",
           "end": "11:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:22:59.461Z"
+          "checked_at": "2026-07-24T00:17:27.875Z"
         },
         {
           "start": "10:45",
           "end": "11:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:04.866Z"
+          "checked_at": "2026-07-24T00:17:32.614Z"
         },
         {
           "start": "11:00",
           "end": "11:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:08.125Z"
+          "checked_at": "2026-07-24T00:17:36.693Z"
         },
         {
           "start": "11:15",
           "end": "11:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:14.247Z"
+          "checked_at": "2026-07-24T00:17:42.530Z"
         },
         {
           "start": "11:30",
           "end": "12:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:18.422Z"
+          "checked_at": "2026-07-24T00:17:47.886Z"
         },
         {
           "start": "11:45",
           "end": "12:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:22.167Z"
+          "checked_at": "2026-07-24T00:17:53.600Z"
         },
         {
           "start": "12:00",
           "end": "12:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:26.628Z"
+          "checked_at": "2026-07-24T00:17:57.606Z"
         },
         {
           "start": "12:15",
           "end": "12:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:30.488Z"
+          "checked_at": "2026-07-24T00:18:02.950Z"
         },
         {
           "start": "12:30",
           "end": "13:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:34.854Z"
+          "checked_at": "2026-07-24T00:18:06.194Z"
         },
         {
           "start": "12:45",
           "end": "13:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:38.511Z"
+          "checked_at": "2026-07-24T00:18:10.722Z"
         },
         {
           "start": "13:00",
           "end": "13:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:43.124Z"
+          "checked_at": "2026-07-24T00:18:15.630Z"
         },
         {
           "start": "13:15",
           "end": "13:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:46.536Z"
+          "checked_at": "2026-07-24T00:18:19.888Z"
         },
         {
           "start": "13:30",
           "end": "14:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:51.495Z"
+          "checked_at": "2026-07-24T00:18:24.442Z"
         },
         {
           "start": "13:45",
           "end": "14:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:23:56.978Z"
+          "checked_at": "2026-07-24T00:18:28.148Z"
         },
         {
           "start": "14:00",
           "end": "14:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:02.311Z"
+          "checked_at": "2026-07-24T00:18:33.353Z"
         },
         {
           "start": "14:15",
           "end": "14:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:06.277Z"
+          "checked_at": "2026-07-24T00:18:37.127Z"
         },
         {
           "start": "14:30",
           "end": "15:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:11.227Z"
+          "checked_at": "2026-07-24T00:18:40.803Z"
         },
         {
           "start": "14:45",
           "end": "15:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:16.661Z"
+          "checked_at": "2026-07-24T00:18:45.193Z"
         },
         {
           "start": "15:00",
           "end": "15:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:21.570Z"
+          "checked_at": "2026-07-24T00:18:50.183Z"
         },
         {
           "start": "15:15",
           "end": "15:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:25.939Z"
+          "checked_at": "2026-07-24T00:18:55.850Z"
         },
         {
           "start": "15:30",
           "end": "16:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:29.208Z"
+          "checked_at": "2026-07-24T00:19:01.117Z"
         },
         {
           "start": "15:45",
           "end": "16:15",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:35.086Z"
+          "checked_at": "2026-07-24T00:19:06.987Z"
         },
         {
           "start": "16:00",
           "end": "16:30",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:38.559Z"
+          "checked_at": "2026-07-24T00:19:10.681Z"
         },
         {
           "start": "16:15",
           "end": "16:45",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:43.219Z"
+          "checked_at": "2026-07-24T00:19:15.787Z"
         },
         {
           "start": "16:30",
           "end": "17:00",
           "state": "reservable",
-          "checked_at": "2026-07-23T00:24:47.450Z"
+          "checked_at": "2026-07-24T00:19:19.406Z"
         }
       ],
       "slot_checks": [
@@ -2742,7 +2194,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:50.537Z"
+          "checked_at": "2026-07-24T00:17:20.423Z"
         },
         {
           "start": "10:15",
@@ -2750,7 +2202,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:54.193Z"
+          "checked_at": "2026-07-24T00:17:24.338Z"
         },
         {
           "start": "10:30",
@@ -2758,7 +2210,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:22:59.461Z"
+          "checked_at": "2026-07-24T00:17:27.875Z"
         },
         {
           "start": "10:45",
@@ -2766,7 +2218,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:04.866Z"
+          "checked_at": "2026-07-24T00:17:32.614Z"
         },
         {
           "start": "11:00",
@@ -2774,7 +2226,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:08.125Z"
+          "checked_at": "2026-07-24T00:17:36.693Z"
         },
         {
           "start": "11:15",
@@ -2782,7 +2234,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:14.247Z"
+          "checked_at": "2026-07-24T00:17:42.530Z"
         },
         {
           "start": "11:30",
@@ -2790,7 +2242,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:18.422Z"
+          "checked_at": "2026-07-24T00:17:47.886Z"
         },
         {
           "start": "11:45",
@@ -2798,7 +2250,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:22.167Z"
+          "checked_at": "2026-07-24T00:17:53.600Z"
         },
         {
           "start": "12:00",
@@ -2806,7 +2258,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:26.628Z"
+          "checked_at": "2026-07-24T00:17:57.606Z"
         },
         {
           "start": "12:15",
@@ -2814,7 +2266,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:30.488Z"
+          "checked_at": "2026-07-24T00:18:02.950Z"
         },
         {
           "start": "12:30",
@@ -2822,7 +2274,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:34.854Z"
+          "checked_at": "2026-07-24T00:18:06.194Z"
         },
         {
           "start": "12:45",
@@ -2830,7 +2282,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:38.511Z"
+          "checked_at": "2026-07-24T00:18:10.722Z"
         },
         {
           "start": "13:00",
@@ -2838,7 +2290,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:43.124Z"
+          "checked_at": "2026-07-24T00:18:15.630Z"
         },
         {
           "start": "13:15",
@@ -2846,7 +2298,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:46.536Z"
+          "checked_at": "2026-07-24T00:18:19.888Z"
         },
         {
           "start": "13:30",
@@ -2854,7 +2306,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:51.495Z"
+          "checked_at": "2026-07-24T00:18:24.442Z"
         },
         {
           "start": "13:45",
@@ -2862,7 +2314,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:23:56.978Z"
+          "checked_at": "2026-07-24T00:18:28.148Z"
         },
         {
           "start": "14:00",
@@ -2870,7 +2322,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:02.311Z"
+          "checked_at": "2026-07-24T00:18:33.353Z"
         },
         {
           "start": "14:15",
@@ -2878,7 +2330,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:06.277Z"
+          "checked_at": "2026-07-24T00:18:37.127Z"
         },
         {
           "start": "14:30",
@@ -2886,7 +2338,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:11.227Z"
+          "checked_at": "2026-07-24T00:18:40.803Z"
         },
         {
           "start": "14:45",
@@ -2894,7 +2346,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:16.661Z"
+          "checked_at": "2026-07-24T00:18:45.193Z"
         },
         {
           "start": "15:00",
@@ -2902,7 +2354,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:21.570Z"
+          "checked_at": "2026-07-24T00:18:50.183Z"
         },
         {
           "start": "15:15",
@@ -2910,7 +2362,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:25.939Z"
+          "checked_at": "2026-07-24T00:18:55.850Z"
         },
         {
           "start": "15:30",
@@ -2918,7 +2370,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:29.208Z"
+          "checked_at": "2026-07-24T00:19:01.117Z"
         },
         {
           "start": "15:45",
@@ -2926,7 +2378,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:35.086Z"
+          "checked_at": "2026-07-24T00:19:06.987Z"
         },
         {
           "start": "16:00",
@@ -2934,7 +2386,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:38.559Z"
+          "checked_at": "2026-07-24T00:19:10.681Z"
         },
         {
           "start": "16:15",
@@ -2942,7 +2394,7 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:43.219Z"
+          "checked_at": "2026-07-24T00:19:15.787Z"
         },
         {
           "start": "16:30",
@@ -2950,7 +2402,430 @@
           "state": "reservable",
           "evidence": "exact_room_api",
           "store_advertised_available": true,
-          "checked_at": "2026-07-23T00:24:47.450Z"
+          "checked_at": "2026-07-24T00:19:19.406Z"
+        }
+      ],
+      "candidate_start_times": [
+        "10:00",
+        "10:15",
+        "10:30",
+        "10:45",
+        "11:00",
+        "11:15",
+        "11:30",
+        "11:45",
+        "12:00",
+        "12:15",
+        "12:30",
+        "12:45",
+        "13:00",
+        "13:15",
+        "13:30",
+        "13:45",
+        "14:00",
+        "14:15",
+        "14:30",
+        "14:45",
+        "15:00",
+        "15:15",
+        "15:30",
+        "15:45",
+        "16:00",
+        "16:15",
+        "16:30"
+      ],
+      "state_counts": {
+        "reservable": 27
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "scan_status": "success",
+      "coverage_complete": true,
+      "negative_result_confirmed": false,
+      "checked_slot_count": 27,
+      "total_slot_count": 27,
+      "checked_at": "2026-07-24T00:21:30.371Z",
+      "slots": [
+        {
+          "start": "10:00",
+          "end": "10:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:26.572Z"
+        },
+        {
+          "start": "10:15",
+          "end": "10:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:29.921Z"
+        },
+        {
+          "start": "10:30",
+          "end": "11:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:35.383Z"
+        },
+        {
+          "start": "10:45",
+          "end": "11:15",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:40.218Z"
+        },
+        {
+          "start": "11:00",
+          "end": "11:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:45.411Z"
+        },
+        {
+          "start": "11:15",
+          "end": "11:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:49.730Z"
+        },
+        {
+          "start": "11:30",
+          "end": "12:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:53.928Z"
+        },
+        {
+          "start": "11:45",
+          "end": "12:15",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:19:59.607Z"
+        },
+        {
+          "start": "12:00",
+          "end": "12:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:03.625Z"
+        },
+        {
+          "start": "12:15",
+          "end": "12:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:07.570Z"
+        },
+        {
+          "start": "12:30",
+          "end": "13:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:13.334Z"
+        },
+        {
+          "start": "12:45",
+          "end": "13:15",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:19.231Z"
+        },
+        {
+          "start": "13:00",
+          "end": "13:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:24.135Z"
+        },
+        {
+          "start": "13:15",
+          "end": "13:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:28.054Z"
+        },
+        {
+          "start": "13:30",
+          "end": "14:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:32.528Z"
+        },
+        {
+          "start": "13:45",
+          "end": "14:15",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:38.305Z"
+        },
+        {
+          "start": "14:00",
+          "end": "14:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:41.633Z"
+        },
+        {
+          "start": "14:15",
+          "end": "14:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:47.189Z"
+        },
+        {
+          "start": "14:30",
+          "end": "15:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:51.722Z"
+        },
+        {
+          "start": "14:45",
+          "end": "15:15",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:55.126Z"
+        },
+        {
+          "start": "15:00",
+          "end": "15:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:20:59.590Z"
+        },
+        {
+          "start": "15:15",
+          "end": "15:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:21:04.748Z"
+        },
+        {
+          "start": "15:30",
+          "end": "16:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:21:08.888Z"
+        },
+        {
+          "start": "15:45",
+          "end": "16:15",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:21:14.051Z"
+        },
+        {
+          "start": "16:00",
+          "end": "16:30",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:21:17.949Z"
+        },
+        {
+          "start": "16:15",
+          "end": "16:45",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:21:23.213Z"
+        },
+        {
+          "start": "16:30",
+          "end": "17:00",
+          "state": "reservable",
+          "checked_at": "2026-07-24T00:21:26.383Z"
+        }
+      ],
+      "slot_checks": [
+        {
+          "start": "10:00",
+          "end": "10:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:26.572Z"
+        },
+        {
+          "start": "10:15",
+          "end": "10:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:29.921Z"
+        },
+        {
+          "start": "10:30",
+          "end": "11:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:35.383Z"
+        },
+        {
+          "start": "10:45",
+          "end": "11:15",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:40.218Z"
+        },
+        {
+          "start": "11:00",
+          "end": "11:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:45.411Z"
+        },
+        {
+          "start": "11:15",
+          "end": "11:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:49.730Z"
+        },
+        {
+          "start": "11:30",
+          "end": "12:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:53.928Z"
+        },
+        {
+          "start": "11:45",
+          "end": "12:15",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:19:59.607Z"
+        },
+        {
+          "start": "12:00",
+          "end": "12:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:03.625Z"
+        },
+        {
+          "start": "12:15",
+          "end": "12:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:07.570Z"
+        },
+        {
+          "start": "12:30",
+          "end": "13:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:13.334Z"
+        },
+        {
+          "start": "12:45",
+          "end": "13:15",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:19.231Z"
+        },
+        {
+          "start": "13:00",
+          "end": "13:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:24.135Z"
+        },
+        {
+          "start": "13:15",
+          "end": "13:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:28.054Z"
+        },
+        {
+          "start": "13:30",
+          "end": "14:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:32.528Z"
+        },
+        {
+          "start": "13:45",
+          "end": "14:15",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:38.305Z"
+        },
+        {
+          "start": "14:00",
+          "end": "14:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:41.633Z"
+        },
+        {
+          "start": "14:15",
+          "end": "14:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:47.189Z"
+        },
+        {
+          "start": "14:30",
+          "end": "15:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:51.722Z"
+        },
+        {
+          "start": "14:45",
+          "end": "15:15",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:55.126Z"
+        },
+        {
+          "start": "15:00",
+          "end": "15:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:20:59.590Z"
+        },
+        {
+          "start": "15:15",
+          "end": "15:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:21:04.748Z"
+        },
+        {
+          "start": "15:30",
+          "end": "16:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:21:08.888Z"
+        },
+        {
+          "start": "15:45",
+          "end": "16:15",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:21:14.051Z"
+        },
+        {
+          "start": "16:00",
+          "end": "16:30",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:21:17.949Z"
+        },
+        {
+          "start": "16:15",
+          "end": "16:45",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:21:23.213Z"
+        },
+        {
+          "start": "16:30",
+          "end": "17:00",
+          "state": "reservable",
+          "evidence": "exact_room_api",
+          "store_advertised_available": true,
+          "checked_at": "2026-07-24T00:21:26.383Z"
         }
       ],
       "candidate_start_times": [
