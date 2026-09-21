@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "demo": false,
-  "generated_at": "2026-09-21T04:45:27.756Z",
+  "generated_at": "2026-09-21T06:08:30.106Z",
   "target": {
     "shop_name": "メガビッグ 布施駅前店",
     "room_name": "フラットルーム",
@@ -14,7 +14,7 @@
   "scan": {
     "status": "partial",
     "scanned_days": [],
-    "error": "page.waitForResponse: Timeout 20000ms exceeded while waiting for event \"response\""
+    "error": "page.goto: Timeout 12000ms exceeded.\nCall log:\n  - navigating to \"https://big-echo.tottokun.com/ownedmedia/ownedmedia_immediately_be/gXmZjh9iVXzm67v\", waiting until \"domcontentloaded\"\n"
   },
   "days": [
     {
