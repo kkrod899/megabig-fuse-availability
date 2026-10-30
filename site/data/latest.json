@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "demo": false,
-  "generated_at": "2026-10-29T05:33:47.386Z",
+  "generated_at": "2026-10-30T02:31:09.410Z",
   "target": {
     "shop_name": "メガビッグ 布施駅前店",
     "room_name": "フラットルーム",
@@ -17,18 +17,6 @@
     "error": "page.waitForResponse: Timeout 20000ms exceeded while waiting for event \"response\""
   },
   "days": [
-    {
-      "date": "2026-10-29",
-      "scan_status": "pending",
-      "coverage_complete": false,
-      "negative_result_confirmed": false,
-      "checked_slot_count": 0,
-      "total_slot_count": 0,
-      "checked_at": null,
-      "slots": [],
-      "slot_checks": [],
-      "candidate_start_times": []
-    },
     {
       "date": "2026-10-30",
       "scan_status": "pending",
@@ -91,6 +79,18 @@
     },
     {
       "date": "2026-11-04",
+      "scan_status": "pending",
+      "coverage_complete": false,
+      "negative_result_confirmed": false,
+      "checked_slot_count": 0,
+      "total_slot_count": 0,
+      "checked_at": null,
+      "slots": [],
+      "slot_checks": [],
+      "candidate_start_times": []
+    },
+    {
+      "date": "2026-11-05",
       "scan_status": "pending",
       "coverage_complete": false,
       "negative_result_confirmed": false,
